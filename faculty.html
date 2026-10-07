@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Directory | Department of MCA — G.T.N. Arts College (Autonomous), Dindigul</title>
+  <meta name="description" content="Meet the distinguished faculty members of the Department of Master of Computer Applications at G.T.N. Arts College (Autonomous), Dindigul, led by Dr. A. Vanitha Katharine.">
+  <meta name="keywords" content="MCA Faculty, G.T.N. Arts College, Dr. A. Vanitha Katharine, Ms. A. Mujiba Parvin, Ms. A. Praveena, Computer Applications Professors">
+  <link rel="canonical" href="https://gtnartscollege.ac.in/mca/faculty.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gtnartscollege.ac.in/mca/faculty.html">
+  <meta property="og:title" content="Faculty Profiles | MCA — G.T.N. Arts College (Autonomous)">
+  <meta property="og:description" content="Official academic profiles of the faculty in the Department of Master of Computer Applications.">
+  <meta property="og:image" content="assets/logos/mca-logo.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/png" href="assets/logos/mca-official-logo.png">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <aside class="topbar" aria-label="College Accreditations">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="topbar-affiliation"><i class="fa-solid fa-graduation-cap"></i> Affiliated to Madurai Kamaraj University</span>
+        <span class="topbar-badge-naac">Re-accredited with 'A' Grade by NAAC</span>
+        <span style="color: #94A3B8;">|</span>
+        <span style="color: #CBD5E1;">Autonomous Institution</span>
+      </div>
+      <div class="topbar-right">
+        <a href="contact.html" class="topbar-link"><i class="fa-solid fa-location-dot"></i> Old Karur Road, Dindigul - 624 005</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="main-header" id="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="G.T.N. Arts College Department of MCA Home">
+        <img src="assets/logos/mca-official-logo.png" alt="MCA Department Logo" class="brand-emblem" width="44" height="44">
+        <div class="brand-text">
+          <span class="brand-college">G.T.N. ARTS COLLEGE (AUTONOMOUS)</span>
+          <span class="brand-dept">DEPARTMENT OF MCA</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="primary-nav-links">
+          <li><button class="mobile-nav-close" aria-label="Close menu">&times;</button></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="programme.html" class="nav-link">Programme</a></li>
+          <li><a href="faculty.html" class="nav-link active">Faculty</a></li>
+          <li><a href="activities.html" class="nav-link">Activities</a></li>
+          <li><a href="events.html" class="nav-link">Events</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+          <li><a href="announcements.html" class="nav-link">Announcements</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-backdrop" aria-hidden="true"></div>
+
+      <button class="mobile-nav-toggle" aria-controls="primary-nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO BANNER -->
+    <section style="background: linear-gradient(135deg, #071228 0%, #0F2347 100%); color: #FFFFFF; padding: 4.5rem 0 3.5rem 0;">
+      <div class="container">
+        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">
+          <a href="index.html" style="color: #94A3B8;">Home</a> &nbsp;/&nbsp; Faculty
+        </div>
+        <h1 style="color: #FFFFFF; margin-bottom: 1rem; font-size: clamp(2rem, 3.5vw, 2.75rem);">
+          Department Faculty Members
+        </h1>
+        <p style="color: #CBD5E1; max-width: 720px; font-size: 1.15rem; line-height: 1.6;">
+          Dedicated educators and researchers providing academic mentorship, laboratory instruction, and technical guidance to postgraduate scholars.
+        </p>
+      </div>
+    </section>
+
+    <!-- FACULTY DIRECTORY SECTION -->
+    <section class="section-padding" id="faculty-directory">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-users"></i> Academic Profiles
+          </div>
+          <h2 class="section-title">Teaching & Research Mentors</h2>
+          <p class="section-subtitle">
+            Our faculty combines academic excellence with an active commitment to modern computer applications education and student development.
+          </p>
+        </div>
+
+        <!-- Rendered dynamically from js/faculty.js -->
+        <div class="faculty-grid" id="faculty-grid-container">
+          <!-- Populated by js/faculty.js -->
+        </div>
+
+        <!-- Official Department Disclosure & Office Policy -->
+        <div style="margin-top: 3.5rem; background: var(--color-bg-subtle); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border-subtle); max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h4 style="color: var(--color-primary-900); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem;">
+            <i class="fa-solid fa-shield-halved" style="color: var(--color-accent-600);"></i>
+            Faculty Consultation & Official Contact Protocol
+          </h4>
+          <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 0.85rem;">
+            To preserve academic confidentiality and adhere to institutional standards, all student interactions, research inquiries, and appointment requests with faculty members should be coordinated through the official Department Office.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #64748B;">
+            Office Hours: Monday - Friday, 09:30 AM - 04:30 PM &nbsp;|&nbsp; Location: MCA Department Block, Ground Floor
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTORSHIP PHILOSOPHY -->
+    <section class="section-padding" style="background: var(--color-bg-subtle);">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-hand-holding-heart"></i> Academic Mentorship
+          </div>
+          <h2 class="section-title">Nurturing Intellectual Growth</h2>
+        </div>
+
+        <div class="mission-grid">
+          <div class="mission-card">
+            <div class="mission-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3 class="mission-title">Classroom Rigor</h3>
+            <p class="mission-desc">Structured lectures covering algorithmic theory, computational paradigms, and modern software principles with comprehensive assessments.</p>
+          </div>
+
+          <div class="mission-card">
+            <div class="mission-header">
+              <div class="mission-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-code"></i></div>
+            </div>
+            <h3 class="mission-title">Lab Supervision</h3>
+            <p class="mission-desc">Personalized guidance during lab sessions ensuring every postgraduate scholar masters coding standards, debugging, and systems deployment.</p>
+          </div>
+
+          <div class="mission-card">
+            <div class="mission-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-user-graduate"></i></div>
+            <h3 class="mission-title">Project & Career Advisory</h3>
+            <p class="mission-desc">Dedicated faculty mentorship for capstone dissertations, technical paper writing, and software industry interview preparations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-top">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <img src="assets/logos/gtn-logo.png" alt="G.T.N. College Seal" width="38" height="38" style="object-fit:contain;">
+          <img src="assets/logos/mca-official-logo.png" alt="MCA Emblem" width="38" height="38" style="object-fit:contain;">
+          <div>
+            <h3 class="footer-brand-title">MCA DEPARTMENT</h3>
+            <div class="footer-brand-sub">G.T.N. ARTS COLLEGE</div>
+          </div>
+        </div>
+        <p class="footer-about-text">
+          G.T.N. Arts College (Autonomous), Dindigul. Affiliated to Madurai Kamaraj University and Re-accredited with 'A' Grade by NAAC.
+        </p>
+        <span class="badge badge-gold">NAAC 'A' GRADE ACCREDITED</span>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Department</a></li>
+          <li><a href="programme.html">MCA Programme</a></li>
+          <li><a href="faculty.html">Faculty Profile</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events & Symposium</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Department</h4>
+        <ul class="footer-links">
+          <li><a href="about.html#vision">Vision & Mission</a></li>
+          <li><a href="programme.html#core-areas">Core Areas</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+          <li><a href="announcements.html">Announcements</a></li>
+          <li><a href="contact.html">Contact Office</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact Information</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-building-columns"></i>
+          <div>
+            Department of MCA<br>
+            G.T.N. Arts College (Autonomous),<br>
+            Old Karur Road, Dindigul - 624 005.
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>mca@gtnartscollege.ac.in</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; 2026 Department of Master of Computer Applications, G.T.N. Arts College (Autonomous), Dindigul. All Rights Reserved.
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">Autonomous • Affiliated to MKU</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/faculty.js"></script>
+</body>
+</html>

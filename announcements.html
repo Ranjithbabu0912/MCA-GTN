@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements & Circulars | Department of MCA — G.T.N. Arts College (Autonomous), Dindigul</title>
+  <meta name="description" content="Official departmental circulars, MCA admission notifications, symposium schedules, and academic announcements for G.T.N. Arts College (Autonomous), Dindigul.">
+  <meta name="keywords" content="MCA Announcements, G.T.N. College Circulars, MCA Admissions Dindigul, Symposium Notifications, Academic Notices">
+  <link rel="canonical" href="https://gtnartscollege.ac.in/mca/announcements.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gtnartscollege.ac.in/mca/announcements.html">
+  <meta property="og:title" content="Department Circulars & Notices | Department of MCA">
+  <meta property="og:description" content="Stay informed on admission dates, technical workshops, and departmental announcements.">
+  <meta property="og:image" content="assets/logos/mca-logo.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/png" href="assets/logos/mca-official-logo.png">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <aside class="topbar" aria-label="College Accreditations">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="topbar-affiliation"><i class="fa-solid fa-graduation-cap"></i> Affiliated to Madurai Kamaraj University</span>
+        <span class="topbar-badge-naac">Re-accredited with 'A' Grade by NAAC</span>
+        <span style="color: #94A3B8;">|</span>
+        <span style="color: #CBD5E1;">Autonomous Institution</span>
+      </div>
+      <div class="topbar-right">
+        <a href="contact.html" class="topbar-link"><i class="fa-solid fa-location-dot"></i> Old Karur Road, Dindigul - 624 005</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="main-header" id="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="G.T.N. Arts College Department of MCA Home">
+        <img src="assets/logos/mca-official-logo.png" alt="MCA Department Logo" class="brand-emblem" width="44" height="44">
+        <div class="brand-text">
+          <span class="brand-college">G.T.N. ARTS COLLEGE (AUTONOMOUS)</span>
+          <span class="brand-dept">DEPARTMENT OF MCA</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="primary-nav-links">
+          <li><button class="mobile-nav-close" aria-label="Close menu">&times;</button></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="programme.html" class="nav-link">Programme</a></li>
+          <li><a href="faculty.html" class="nav-link">Faculty</a></li>
+          <li><a href="activities.html" class="nav-link">Activities</a></li>
+          <li><a href="events.html" class="nav-link">Events</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+          <li><a href="announcements.html" class="nav-link active">Announcements</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-backdrop" aria-hidden="true"></div>
+
+      <button class="mobile-nav-toggle" aria-controls="primary-nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO BANNER -->
+    <section style="background: linear-gradient(135deg, #071228 0%, #0F2347 100%); color: #FFFFFF; padding: 4.5rem 0 3.5rem 0;">
+      <div class="container">
+        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">
+          <a href="index.html" style="color: #94A3B8;">Home</a> &nbsp;/&nbsp; Announcements
+        </div>
+        <h1 style="color: #FFFFFF; margin-bottom: 1rem; font-size: clamp(2rem, 3.5vw, 2.75rem);">
+          Department Announcements & Circulars
+        </h1>
+        <p style="color: #CBD5E1; max-width: 720px; font-size: 1.15rem; line-height: 1.6;">
+          Official communications, admission updates, semester notices, and technical event registrations for scholars and aspirants.
+        </p>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS LIST SECTION -->
+    <section class="section-padding">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-bell"></i> Official Notices
+          </div>
+          <h2 class="section-title">Department Notice Board</h2>
+          <p class="section-subtitle">
+            All notifications are verified and issued under the authority of the Head of the Department and College Administration.
+          </p>
+        </div>
+
+        <!-- Rendered dynamically via js/announcements.js -->
+        <div class="announcement-list" id="announcements-list-container">
+          <!-- Populated by js/announcements.js -->
+        </div>
+
+        <!-- Department Advisory Desk Notice -->
+        <div style="margin-top: 3.5rem; background: var(--color-bg-subtle); border-radius: var(--radius-xl); padding: 2.25rem; border: 1px solid var(--color-border-subtle); display: flex; align-items: flex-start; gap: 1.25rem;">
+          <div style="width: 48px; height: 48px; border-radius: 10px; background: var(--color-accent-100); color: var(--color-accent-600); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0;">
+            <i class="fa-solid fa-circle-question"></i>
+          </div>
+          <div>
+            <h4 style="font-size: 1.15rem; color: var(--color-primary-900); margin-bottom: 0.4rem;">Need Clarification on a Notice?</h4>
+            <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1.25rem;">
+              For inquiries regarding admission counseling procedures, academic eligibility criteria, or event guidelines, please visit the Department Office or connect via email.
+            </p>
+            <a href="contact.html" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-paper-plane"></i> Contact Department Office
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-top">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <img src="assets/logos/gtn-logo.png" alt="G.T.N. College Seal" width="38" height="38" style="object-fit:contain;">
+          <img src="assets/logos/mca-official-logo.png" alt="MCA Emblem" width="38" height="38" style="object-fit:contain;">
+          <div>
+            <h3 class="footer-brand-title">MCA DEPARTMENT</h3>
+            <div class="footer-brand-sub">G.T.N. ARTS COLLEGE</div>
+          </div>
+        </div>
+        <p class="footer-about-text">
+          G.T.N. Arts College (Autonomous), Dindigul. Affiliated to Madurai Kamaraj University and Re-accredited with 'A' Grade by NAAC.
+        </p>
+        <span class="badge badge-gold">NAAC 'A' GRADE ACCREDITED</span>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Department</a></li>
+          <li><a href="programme.html">MCA Programme</a></li>
+          <li><a href="faculty.html">Faculty Profile</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events & Symposium</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Department</h4>
+        <ul class="footer-links">
+          <li><a href="about.html#vision">Vision & Mission</a></li>
+          <li><a href="programme.html#core-areas">Core Areas</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+          <li><a href="announcements.html">Announcements</a></li>
+          <li><a href="contact.html">Contact Office</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact Information</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-building-columns"></i>
+          <div>
+            Department of MCA<br>
+            G.T.N. Arts College (Autonomous),<br>
+            Old Karur Road, Dindigul - 624 005.
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>mca@gtnartscollege.ac.in</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; 2026 Department of Master of Computer Applications, G.T.N. Arts College (Autonomous), Dindigul. All Rights Reserved.
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">Autonomous • Affiliated to MKU</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/announcements.js"></script>
+</body>
+</html>

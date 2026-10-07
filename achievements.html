@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements & Honors | Department of MCA — G.T.N. Arts College (Autonomous), Dindigul</title>
+  <meta name="description" content="Explore student and faculty accomplishments, competitive awards, academic distinctions, and research honors in the Department of MCA at G.T.N. Arts College.">
+  <meta name="keywords" content="MCA Achievements, Student Awards, Faculty Honors, Technical Competitions, G.T.N. Arts College Dindigul">
+  <link rel="canonical" href="https://gtnartscollege.ac.in/mca/achievements.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gtnartscollege.ac.in/mca/achievements.html">
+  <meta property="og:title" content="Department Achievements | MCA — G.T.N. Arts College">
+  <meta property="og:description" content="Showcase of student competition victories, certifications, and academic excellence milestones.">
+  <meta property="og:image" content="assets/logos/mca-logo.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/png" href="assets/logos/mca-official-logo.png">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <aside class="topbar" aria-label="College Accreditations">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="topbar-affiliation"><i class="fa-solid fa-graduation-cap"></i> Affiliated to Madurai Kamaraj University</span>
+        <span class="topbar-badge-naac">Re-accredited with 'A' Grade by NAAC</span>
+        <span style="color: #94A3B8;">|</span>
+        <span style="color: #CBD5E1;">Autonomous Institution</span>
+      </div>
+      <div class="topbar-right">
+        <a href="contact.html" class="topbar-link"><i class="fa-solid fa-location-dot"></i> Old Karur Road, Dindigul - 624 005</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="main-header" id="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="G.T.N. Arts College Department of MCA Home">
+        <img src="assets/logos/mca-official-logo.png" alt="MCA Department Logo" class="brand-emblem" width="44" height="44">
+        <div class="brand-text">
+          <span class="brand-college">G.T.N. ARTS COLLEGE (AUTONOMOUS)</span>
+          <span class="brand-dept">DEPARTMENT OF MCA</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="primary-nav-links">
+          <li><button class="mobile-nav-close" aria-label="Close menu">&times;</button></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="programme.html" class="nav-link">Programme</a></li>
+          <li><a href="faculty.html" class="nav-link">Faculty</a></li>
+          <li><a href="activities.html" class="nav-link">Activities</a></li>
+          <li><a href="events.html" class="nav-link">Events</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="achievements.html" class="nav-link active">Achievements</a></li>
+          <li><a href="announcements.html" class="nav-link">Announcements</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-backdrop" aria-hidden="true"></div>
+
+      <button class="mobile-nav-toggle" aria-controls="primary-nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO BANNER -->
+    <section style="background: linear-gradient(135deg, #071228 0%, #0F2347 100%); color: #FFFFFF; padding: 4.5rem 0 3.5rem 0;">
+      <div class="container">
+        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">
+          <a href="index.html" style="color: #94A3B8;">Home</a> &nbsp;/&nbsp; Achievements
+        </div>
+        <h1 style="color: #FFFFFF; margin-bottom: 1rem; font-size: clamp(2rem, 3.5vw, 2.75rem);">
+          Department Honors & Achievements
+        </h1>
+        <p style="color: #CBD5E1; max-width: 720px; font-size: 1.15rem; line-height: 1.6;">
+          Celebrating scholarly excellence, competitive accolades, industry certifications, and innovative milestones achieved by our students and faculty.
+        </p>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS CARDS GRID -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-trophy"></i> Meritorious Milestones
+          </div>
+          <h2 class="section-title">Verified Department Accomplishments</h2>
+          <p class="section-subtitle">
+            A continuous record of excellence across academic performance, technical competitions, and professional certifications.
+          </p>
+        </div>
+
+        <!-- Rendered dynamically via js/achievements.js -->
+        <div class="mission-grid" id="achievements-grid-container">
+          <!-- Populated by js/achievements.js -->
+        </div>
+
+        <!-- CATEGORIZED OFFICIAL SECTIONS -->
+        <div style="margin-top: 4.5rem; display: flex; flex-direction: column; gap: 3.5rem;">
+          
+          <!-- Student & Competitions Section -->
+          <div>
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-border-subtle); padding-bottom: 0.75rem;">
+              <i class="fa-solid fa-award" style="font-size: 1.5rem; color: var(--color-gold-600);"></i>
+              <h3 style="font-size: 1.45rem; color: var(--color-primary-900);">Student Technical Competitions & Hackathons</h3>
+            </div>
+            <div class="mission-grid">
+              <div class="mission-card">
+                <span class="badge badge-gold" style="align-self: flex-start; margin-bottom: 1rem;">COMPETITION</span>
+                <h4 style="font-size: 1.15rem; color: var(--color-primary-900); margin-bottom: 0.5rem;">Inter-Collegiate Coding Sprint</h4>
+                <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.6;">
+                  Postgraduate student teams recognized for algorithmic problem solving in inter-institutional collegiate contests across Southern Tamil Nadu.
+                </p>
+              </div>
+              <div class="mission-card">
+                <span class="badge badge-cyan" style="align-self: flex-start; margin-bottom: 1rem;">ACADEMIC EXCELLENCE</span>
+                <h4 style="font-size: 1.15rem; color: var(--color-primary-900); margin-bottom: 0.5rem;">Semester Meritorious Distinction</h4>
+                <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.6;">
+                  Scholars recording first-class distinctions across core theoretical curricula and lab practical evaluations.
+                </p>
+              </div>
+              <div class="mission-card">
+                <span class="badge badge-primary" style="align-self: flex-start; margin-bottom: 1rem;">CERTIFICATIONS</span>
+                <h4 style="font-size: 1.15rem; color: var(--color-primary-900); margin-bottom: 0.5rem;">Cloud & Programming Credentials</h4>
+                <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.6;">
+                  Scholars advancing through industry-recognized online credentials in Python, Full-stack Web, and Cloud systems.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Publications & Faculty Research Section -->
+          <div>
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-border-subtle); padding-bottom: 0.75rem;">
+              <i class="fa-solid fa-book-open" style="font-size: 1.5rem; color: var(--color-accent-600);"></i>
+              <h3 style="font-size: 1.45rem; color: var(--color-primary-900);">Research Publications & Faculty Honors</h3>
+            </div>
+            <div style="background: var(--color-bg-surface); padding: 2.25rem; border-radius: var(--radius-xl); border: 1px solid var(--color-border-subtle); box-shadow: var(--shadow-sm);">
+              <div style="display:flex; align-items:flex-start; gap: 1rem;">
+                <div style="width: 44px; height: 44px; border-radius: 8px; background: var(--color-accent-100); color: var(--color-accent-600); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;">
+                  <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+                <div>
+                  <h4 style="font-size: 1.15rem; color: var(--color-primary-900); margin-bottom: 0.4rem;">Official Research Register</h4>
+                  <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 1rem;">
+                    Faculty members are actively engaged in doctoral research, specialized curriculum drafting, and refereeing academic technical papers. Detailed citations and individual publication lists will be updated following formal departmental peer review.
+                  </p>
+                  <span class="badge" style="background: #E2E8F0; color: #475569;">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Information to be updated by the department.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submission / Update Guidance Notice -->
+        <div style="margin-top: 3.5rem; background: var(--color-bg-subtle); padding: 1.75rem 2rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border-subtle); text-align: center;">
+          <h4 style="color: var(--color-primary-900); margin-bottom: 0.5rem;">Have an Academic or Technical Achievement to Record?</h4>
+          <p style="font-size: 0.92rem; color: var(--color-text-muted); max-width: 700px; margin: 0 auto 1.25rem auto;">
+            Enrolled postgraduate students and faculty members who have published research papers, won inter-collegiate events, or earned verified professional certifications may submit documentary proof to the Department Office.
+          </p>
+          <a href="contact.html" class="btn btn-secondary btn-sm">
+            <i class="fa-solid fa-envelope"></i> Contact Department Coordinator
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-top">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <img src="assets/logos/gtn-logo.png" alt="G.T.N. College Seal" width="38" height="38" style="object-fit:contain;">
+          <img src="assets/logos/mca-official-logo.png" alt="MCA Emblem" width="38" height="38" style="object-fit:contain;">
+          <div>
+            <h3 class="footer-brand-title">MCA DEPARTMENT</h3>
+            <div class="footer-brand-sub">G.T.N. ARTS COLLEGE</div>
+          </div>
+        </div>
+        <p class="footer-about-text">
+          G.T.N. Arts College (Autonomous), Dindigul. Affiliated to Madurai Kamaraj University and Re-accredited with 'A' Grade by NAAC.
+        </p>
+        <span class="badge badge-gold">NAAC 'A' GRADE ACCREDITED</span>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Department</a></li>
+          <li><a href="programme.html">MCA Programme</a></li>
+          <li><a href="faculty.html">Faculty Profile</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events & Symposium</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Department</h4>
+        <ul class="footer-links">
+          <li><a href="about.html#vision">Vision & Mission</a></li>
+          <li><a href="programme.html#core-areas">Core Areas</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+          <li><a href="announcements.html">Announcements</a></li>
+          <li><a href="contact.html">Contact Office</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact Information</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-building-columns"></i>
+          <div>
+            Department of MCA<br>
+            G.T.N. Arts College (Autonomous),<br>
+            Old Karur Road, Dindigul - 624 005.
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>mca@gtnartscollege.ac.in</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; 2026 Department of Master of Computer Applications, G.T.N. Arts College (Autonomous), Dindigul. All Rights Reserved.
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">Autonomous • Affiliated to MKU</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/achievements.js"></script>
+</body>
+</html>

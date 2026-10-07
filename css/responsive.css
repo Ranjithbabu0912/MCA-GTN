@@ -1,0 +1,289 @@
+/* ==========================================================================
+   G.T.N. ARTS COLLEGE (AUTONOMOUS), DINDIGUL
+   DEPARTMENT OF MASTER OF COMPUTER APPLICATIONS (MCA)
+   RESPONSIVE LAYOUTS & MEDIA QUERIES (responsive.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LAPTOPS & SMALL DESKTOPS (<= 1200px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-visual-card {
+    max-width: 650px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .editorial-grid {
+    gap: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1150px) and (min-width: 993px) {
+  .nav-link {
+    font-size: 0.81rem;
+    padding: 0.35rem 0.48rem;
+  }
+  .brand-sub {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. TABLETS & IPADS (<= 992px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 992px) {
+  :root {
+    --header-height: 70px;
+    --space-3xl: 3.5rem;
+  }
+
+  /* Navigation: Slide-over Drawer for Mobile & Tablet */
+  .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 82%;
+    max-width: 380px;
+    height: 100vh;
+    background: #0B1D3A;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5.5rem 2rem 2rem 2rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+    overflow-y: auto;
+    gap: 0.5rem;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-link {
+    color: #CBD5E1;
+    font-size: 1.05rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #FFFFFF;
+    background: rgba(0, 180, 216, 0.15);
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  /* Close button inside mobile menu drawer */
+  .mobile-nav-close {
+    display: block;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Mobile backdrop overlay */
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 18, 40, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Grid Reductions */
+  .mission-grid,
+  .faculty-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .editorial-image-frame {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .emphases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .lightbox-nav-prev { left: 0.5rem; }
+  .lightbox-nav-next { right: 0.5rem; }
+}
+
+/* --------------------------------------------------------------------------
+   3. MOBILE LANDSCAPE & SMALL TABLETS (<= 768px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  :root {
+    --space-3xl: 2.75rem;
+    --space-4xl: 3.5rem;
+  }
+
+  .topbar {
+    display: none; /* Keep mobile view clean, key affiliations remain in header & footer */
+  }
+
+  .brand-dept {
+    font-size: 0.98rem;
+  }
+
+  .brand-college {
+    font-size: 0.7rem;
+  }
+
+  .hero {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+
+  .hero-highlights-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mission-grid,
+  .faculty-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-banner {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .vision-banner::before {
+    display: none;
+  }
+
+  .editorial-badge-float {
+    position: static;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .contact-form-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .modal-box {
+    margin: 1rem;
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. COMPACT MOBILE SCREENS (<= 480px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .brand-emblem {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .announcement-card {
+    padding: 1.25rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .back-to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

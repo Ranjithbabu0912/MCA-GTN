@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department of MCA | G.T.N. Arts College (Autonomous), Dindigul</title>
+  <meta name="description"
+    content="Explore the Department of Master of Computer Applications at G.T.N. Arts College (Autonomous), Dindigul — empowering minds, inspiring innovation, and shaping futures through technology.">
+  <meta name="keywords"
+    content="MCA, G.T.N. Arts College, Dindigul, Master of Computer Applications, Computer Science, Autonomous College Dindigul, AI, Machine Learning, Cloud Computing, Postgraduate IT">
+  <meta name="author" content="Department of MCA, G.T.N. Arts College">
+  <link rel="canonical" href="https://gtnartscollege.ac.in/mca/">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gtnartscollege.ac.in/mca/">
+  <meta property="og:title" content="Department of MCA | G.T.N. Arts College (Autonomous), Dindigul">
+  <meta property="og:description"
+    content="Empowering minds, inspiring innovation, and shaping futures through cutting-edge computer applications education.">
+  <meta property="og:image" content="assets/logos/mca-logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/png" href="assets/logos/mca-official-logo.png">
+</head>
+
+<body>
+
+  <!-- Topbar: College Credentials -->
+  <aside class="topbar" aria-label="College Accreditations">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="topbar-affiliation">
+          <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+          Affiliated to Madurai Kamaraj University
+        </span>
+        <span class="topbar-badge-naac">Re-accredited with 'A' Grade by NAAC</span>
+        <span style="color: #94A3B8;">|</span>
+        <span style="color: #CBD5E1;">Autonomous Institution</span>
+      </div>
+      <div class="topbar-right">
+        <a href="contact.html" class="topbar-link">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Old Karur Road, Dindigul - 624 005
+        </a>
+        <a href="contact.html" class="topbar-link">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i> mca@gtnartscollege.ac.in
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="G.T.N. Arts College Department of MCA Home">
+        <img src="assets/logos/mca-official-logo.png" alt="MCA Department Logo" class="brand-emblem" width="100"
+          height="100">
+        <div class="brand-text">
+          <span class="brand-college">G.T.N. ARTS COLLEGE (AUTONOMOUS)</span>
+          <span class="brand-dept">DEPARTMENT OF MCA</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="primary-nav-links">
+          <li><button class="mobile-nav-close" aria-label="Close menu">&times;</button></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="programme.html" class="nav-link">Programme</a></li>
+          <li><a href="faculty.html" class="nav-link">Faculty</a></li>
+          <li><a href="activities.html" class="nav-link">Activities</a></li>
+          <li><a href="events.html" class="nav-link">Events</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+          <li><a href="announcements.html" class="nav-link">Announcements</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-backdrop" aria-hidden="true"></div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-nav-toggle" aria-controls="primary-nav-links" aria-expanded="false"
+        aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- News & Announcement Ticker -->
+  <section class="ticker-bar" aria-label="Department News Ticker">
+    <div class="container ticker-wrapper">
+      <div class="ticker-label">
+        <i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Updates
+      </div>
+      <div class="ticker-viewport">
+        <div class="ticker-items" id="header-ticker-items">
+          <span class="ticker-item">Loading latest departmental notices...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero-section" aria-labelledby="hero-title">
+      <canvas id="hero-particles" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+
+      <div class="container hero-container">
+        <!-- Hero Left Column: Academic Tech Presentation -->
+        <div class="hero-text-content">
+          <div class="hero-badge reveal-on-scroll">
+            <span class="hero-badge-pulse" aria-hidden="true"></span>
+            <span>POSTGRADUATE EXCELLENCE • COMMENCING 2025</span>
+          </div>
+
+          <div class="hero-institution reveal-on-scroll reveal-delay-1">
+            G.T.N. ARTS COLLEGE (AUTONOMOUS), DINDIGUL
+          </div>
+
+          <h1 class="hero-title reveal-on-scroll reveal-delay-1" id="hero-title">
+            Department of Master of <span>Computer Applications</span>
+          </h1>
+
+          <div class="hero-tagline reveal-on-scroll reveal-delay-2">
+            EMPOWERING MINDS | INSPIRING INNOVATION | SHAPING FUTURES
+          </div>
+
+          <p class="hero-desc reveal-on-scroll reveal-delay-2">
+            A state-of-the-art postgraduate programme designed to build computational mastery, research rigor, and
+            ethical technology leadership in emerging computing domains.
+          </p>
+
+          <div class="hero-actions reveal-on-scroll reveal-delay-3">
+            <a href="about.html" class="btn btn-accent btn-lg">
+              Explore Department <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="events.html" class="btn btn-outline-white btn-lg">
+              View Events <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Quick Stats / Highlights -->
+          <div class="hero-highlights-list reveal-on-scroll reveal-delay-4">
+            <div class="hero-stat-card">
+              <span class="hero-stat-number stat-counter" data-target="2025">0</span>
+              <span class="hero-stat-label">Launch Year</span>
+            </div>
+            <div class="hero-stat-card">
+              <span class="hero-stat-number"><span class="stat-counter" data-target="100">0</span>%</span>
+              <span class="hero-stat-label">Practical Lab Focus</span>
+            </div>
+            <div class="hero-stat-card">
+              <span class="hero-stat-number"><span class="stat-counter" data-target="10">0</span></span>
+              <span class="hero-stat-label">Core Pillars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Interactive Tech Architecture Showcase -->
+        <div class="hero-visual-card reveal-on-scroll reveal-delay-2">
+          <div class="code-window-header">
+            <div class="code-dots" aria-hidden="true">
+              <span class="code-dot dot-red"></span>
+              <span class="code-dot dot-yellow"></span>
+              <span class="code-dot dot-green"></span>
+            </div>
+            <span class="code-file-name">mca_core_framework.ts</span>
+            <span class="badge badge-cyan" style="font-size: 0.68rem;">v2.6 ACADEMIC</span>
+          </div>
+
+          <div class="hero-card-features">
+            <div class="hero-feature-item">
+              <div class="hero-feature-icon">
+                <i class="fa-solid fa-brain" aria-hidden="true"></i>
+              </div>
+              <div class="hero-feature-text">
+                <h4>Artificial Intelligence & ML</h4>
+                <p>Specialized electives spanning neural architectures, prompt workflows, and data intelligence.</p>
+              </div>
+            </div>
+
+            <div class="hero-feature-item">
+              <div class="hero-feature-icon">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              </div>
+              <div class="hero-feature-text">
+                <h4>Cyber Security & Networks</h4>
+                <p>Robust focus on defensive network protocols, cryptographic assurance, and ethical standards.</p>
+              </div>
+            </div>
+
+            <div class="hero-feature-item">
+              <div class="hero-feature-icon">
+                <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              </div>
+              <div class="hero-feature-text">
+                <h4>Cloud & Enterprise Systems</h4>
+                <p>Microservices, database administration, and resilient software engineering methodologies.</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94A3B8;">Accredited
+              Curriculum</span>
+            <a href="programme.html" style="font-size: 0.82rem; color: #38BDF8; font-weight: 600;">Full Syllabus
+              &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT THE DEPARTMENT (EDITORIAL LAYOUT) -->
+    <section class="section-padding" id="about-overview" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="editorial-grid">
+          <!-- Text Content with Official Copy -->
+          <div class="reveal-on-scroll">
+            <div class="section-eyebrow">
+              <i class="fa-solid fa-landmark" aria-hidden="true"></i> About The Department
+            </div>
+            <h2 class="section-title" id="about-heading">
+              Shaping Next-Generation Technocrats at G.T.N. Arts College
+            </h2>
+            <div class="editorial-lead">
+              The Postgraduate Department of Computer Applications starts in 2025. The programme focuses on core
+              computing principles and their practical applications.
+            </div>
+            <div class="editorial-body">
+              <p>
+                Students gain expertise in areas such as data structures, database management, software engineering and
+                network technologies, supplemented by specialized electives in emerging fields like AI, machine
+                learning, and cyber security.
+              </p>
+              <p>
+                Hands-on learning is emphasized through labs, projects, and internships utilizing state-of-the-art
+                facilities. Experienced faculty with rich teaching and research acumen provide mentorship and guidance.
+              </p>
+              <p>
+                Strong industry ties offer networking opportunities and career prospects, preparing graduates for
+                diverse roles in the IT sector and thereby ensuring that the department remains at the forefront of
+                computer applications education.
+              </p>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+              <a href="about.html" class="btn btn-primary">
+                Read Detailed Profile <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a href="faculty.html" class="btn btn-secondary">
+                Meet Faculty
+              </a>
+            </div>
+          </div>
+
+          <!-- Editorial Visual Frame -->
+          <div class="editorial-card-wrapper reveal-on-scroll reveal-delay-2">
+            <div class="editorial-image-frame">
+              <img src="assets/images/department-building.svg"
+                alt="Illustration of the MCA Department Academic Facility" width="800" height="500" loading="lazy">
+            </div>
+            <div class="editorial-badge-float">
+              <div class="editorial-badge-icon">
+                <i class="fa-solid fa-award" aria-hidden="true"></i>
+              </div>
+              <div class="editorial-badge-text">
+                <strong>Autonomous Rigor</strong>
+                <span>Madurai Kamaraj University Affiliated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISION & MISSION SECTION -->
+    <section class="section-padding" style="background: var(--color-bg-subtle);" id="vision-mission-section"
+      aria-labelledby="vision-heading">
+      <div class="container">
+        <!-- Vision Dedicated Banner -->
+        <div class="vision-banner reveal-on-scroll">
+          <div class="vision-content">
+            <div class="vision-title" id="vision-heading">
+              <i class="fa-solid fa-eye" aria-hidden="true"></i> Departmental Vision
+            </div>
+            <blockquote class="vision-quote">
+              "To empower the next generation of computer applications professionals with the skills, knowledge, and
+              ethical awareness to shape a better future through technology."
+            </blockquote>
+          </div>
+        </div>
+
+        <!-- Section Heading for Mission -->
+        <div class="section-header reveal-on-scroll">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-bullseye" aria-hidden="true"></i> Core Purpose
+          </div>
+          <h2 class="section-title">Our Tripartite Mission</h2>
+          <p class="section-subtitle">
+            Cultivating technical prowess, ethical accountability, and research innovation through three foundational
+            pillars.
+          </p>
+        </div>
+
+        <!-- 3 Mission Cards -->
+        <div class="mission-grid">
+          <!-- Card 01 -->
+          <article class="mission-card reveal-on-scroll reveal-delay-1">
+            <div class="mission-header">
+              <span class="mission-num">01</span>
+              <div class="mission-icon">
+                <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+              </div>
+            </div>
+            <h3 class="mission-title">Responsible Innovation & Research</h3>
+            <p class="mission-desc">
+              To educate and conduct impactful research by relevant computer applications education as well as equipping
+              the students with the skills and knowledge.
+            </p>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="mission-card reveal-on-scroll reveal-delay-2">
+            <div class="mission-header">
+              <span class="mission-num">02</span>
+              <div class="mission-icon">
+                <i class="fa-solid fa-earth-asia" aria-hidden="true"></i>
+              </div>
+            </div>
+            <h3 class="mission-title">Societal Impact</h3>
+            <p class="mission-desc">
+              To cultivate computer applications professionals who leverage technology to address global challenges and
+              build a sustainable future.
+            </p>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="mission-card reveal-on-scroll reveal-delay-3">
+            <div class="mission-header">
+              <span class="mission-num">03</span>
+              <div class="mission-icon">
+                <i class="fa-solid fa-users-gear" aria-hidden="true"></i>
+              </div>
+            </div>
+            <h3 class="mission-title">Holistic Development</h3>
+            <p class="mission-desc">
+              To empower students to become innovative leaders in computer applications thereby combining technical
+              excellence with a commitment to adopt responsible technology practices.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMME CORE CURRICULUM PREVIEW -->
+    <section class="section-padding" id="programme-preview" aria-labelledby="prog-heading">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Curriculum Highlights
+          </div>
+          <h2 class="section-title" id="prog-heading">Core Computing Knowledge Areas</h2>
+          <p class="section-subtitle">
+            A comprehensive curriculum aligned with National Education Policy (NEP) guidelines and the dynamic demands
+            of the global software industry.
+          </p>
+        </div>
+
+        <div class="core-areas-grid">
+          <div class="core-card reveal-on-scroll reveal-delay-1">
+            <div class="core-card-icon"><i class="fa-solid fa-sitemap"></i></div>
+            <h3 class="core-card-title">Data Structures & Algorithms</h3>
+            <p class="core-card-desc">Efficient computational paradigms, algorithmic optimization, and abstract data
+              types.</p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-1">
+            <div class="core-card-icon"><i class="fa-solid fa-database"></i></div>
+            <h3 class="core-card-title">Database Management</h3>
+            <p class="core-card-desc">Relational schema design, SQL optimization, indexing, and NoSQL big data
+              architectures.</p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-2">
+            <div class="core-card-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h3 class="core-card-title">Software Engineering</h3>
+            <p class="core-card-desc">Agile processes, design patterns, testing methodologies, and lifecycle
+              maintenance.</p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-2">
+            <div class="core-card-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3 class="core-card-title">Computer Networks</h3>
+            <p class="core-card-desc">TCP/IP protocol suites, socket programming, wireless communications, and traffic
+              routing.</p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-3">
+            <div class="core-card-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3 class="core-card-title">Artificial Intelligence</h3>
+            <p class="core-card-desc">Search heuristics, knowledge graphs, computer vision, and cognitive systems.</p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-3">
+            <div class="core-card-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3 class="core-card-title">Machine Learning</h3>
+            <p class="core-card-desc">Supervised/unsupervised models, predictive analytics, and deep neural frameworks.
+            </p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-4">
+            <div class="core-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="core-card-title">Cyber Security</h3>
+            <p class="core-card-desc">Defensive cryptographic systems, threat modeling, and digital security governance.
+            </p>
+          </div>
+          <div class="core-card reveal-on-scroll reveal-delay-4">
+            <div class="core-card-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3 class="core-card-title">Cloud Computing</h3>
+            <p class="core-card-desc">Distributed virtual architectures, containerization, serverless pipelines, and
+              DevOps.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.75rem;">
+          <a href="programme.html" class="btn btn-primary">
+            Explore All 10 Core Areas & 10 Key Emphases <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACULTY SECTION -->
+    <section class="section-padding" style="background: var(--color-bg-subtle);" id="faculty-section"
+      aria-labelledby="faculty-heading">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Academic Leadership
+          </div>
+          <h2 class="section-title" id="faculty-heading">Distinguished Department Faculty</h2>
+          <p class="section-subtitle">
+            Mentors with rich academic rigor, dedicated research acumen, and a commitment to nurturing future-ready IT
+            professionals.
+          </p>
+        </div>
+
+        <!-- Rendered via js/faculty.js -->
+        <div class="faculty-grid" id="home-faculty-grid">
+          <!-- Fallback serverless cards will be injected by js/faculty.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="faculty.html" class="btn btn-secondary">
+            View Complete Faculty Directory <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING EVENTS PREVIEW -->
+    <section class="section-padding" id="events-section" aria-labelledby="events-heading">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Academic Calendar
+          </div>
+          <h2 class="section-title" id="events-heading">Departmental Events & Symposiums</h2>
+          <p class="section-subtitle">
+            Hands-on workshops, technical symposiums, and guest interactions driving practical computational competence.
+          </p>
+        </div>
+
+        <!-- Rendered via js/events.js -->
+        <div class="events-grid" id="home-events-grid">
+          <!-- Event items injected dynamically -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="events.html" class="btn btn-primary">
+            View All Events & Past Archive <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS & ACHIEVEMENTS DUAL SECTION -->
+    <section class="section-padding" style="background: var(--color-bg-subtle);" id="updates-section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+          <!-- Announcements Widget -->
+          <div class="reveal-on-scroll">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.45rem; color: var(--color-primary-900);">
+                <i class="fa-solid fa-bullhorn" style="color: var(--color-accent-600); margin-right: 0.5rem;"
+                  aria-hidden="true"></i>
+                Latest Announcements
+              </h3>
+              <a href="announcements.html"
+                style="font-size: 0.85rem; font-weight: 600; color: var(--color-primary-600);">View All &rarr;</a>
+            </div>
+            <div id="home-announcements-widget">
+              <!-- Dynamically populated via js/announcements.js -->
+            </div>
+          </div>
+
+          <!-- Achievements Widget -->
+          <div class="reveal-on-scroll reveal-delay-2">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.45rem; color: var(--color-primary-900);">
+                <i class="fa-solid fa-trophy" style="color: var(--color-gold-600); margin-right: 0.5rem;"
+                  aria-hidden="true"></i>
+                Merit & Achievements
+              </h3>
+              <a href="achievements.html"
+                style="font-size: 0.85rem; font-weight: 600; color: var(--color-primary-600);">View All &rarr;</a>
+            </div>
+            <div id="home-achievements-container" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Dynamically populated via js/achievements.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY PREVIEW -->
+    <section class="section-padding" id="gallery-preview-section" aria-labelledby="gallery-preview-heading">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-images" aria-hidden="true"></i> Visual Tour
+          </div>
+          <h2 class="section-title" id="gallery-preview-heading">Life in the MCA Department</h2>
+          <p class="section-subtitle">
+            State-of-the-art computational laboratories, academic interactions, and vibrant student activities.
+          </p>
+        </div>
+
+        <!-- Rendered via js/gallery.js -->
+        <div class="gallery-grid" id="home-gallery-grid">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="gallery.html" class="btn btn-secondary">
+            Explore Full Interactive Gallery <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT CTA CALLOUT -->
+    <section class="section-padding"
+      style="background: linear-gradient(135deg, #071228 0%, #0B1D3A 100%); color: #FFFFFF;" id="contact-cta">
+      <div class="container" style="text-align: center; max-width: 820px;">
+        <div class="badge badge-gold" style="margin-bottom: 1rem;">ADMISSIONS & INQUIRIES OPEN</div>
+        <h2 style="color: #FFFFFF; font-size: clamp(1.85rem, 3.5vw, 2.5rem); margin-bottom: 1.25rem;">
+          Begin Your Postgraduate Technology Journey
+        </h2>
+        <p style="color: #CBD5E1; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.25rem;">
+          Connect with the Department of Master of Computer Applications at G.T.N. Arts College (Autonomous), Dindigul,
+          for programme eligibility, admission schedules, and lab infrastructure tours.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="contact.html" class="btn btn-accent btn-lg">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Reach Department Office
+          </a>
+          <a href="programme.html" class="btn btn-outline-white btn-lg">
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i> View Syllabus & Eligibility
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER COMPONENT -->
+  <footer class="site-footer" id="site-footer" aria-label="Site Footer">
+    <div class="container footer-top">
+      <!-- Col 1: Department Overview -->
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <img src="assets/logos/gtn-logo.png" alt="G.T.N. College Seal" width="38" height="38"
+            style="object-fit:contain;">
+          <img src="assets/logos/mca-official-logo.png" alt="MCA Emblem" width="38" height="38"
+            style="object-fit:contain;">
+          <div>
+            <h3 class="footer-brand-title">MCA DEPARTMENT</h3>
+            <div class="footer-brand-sub">G.T.N. ARTS COLLEGE</div>
+          </div>
+        </div>
+        <p class="footer-about-text">
+          G.T.N. Arts College (Autonomous), Dindigul. Affiliated to Madurai Kamaraj University and Re-accredited with
+          'A' Grade by NAAC. Empowering students with cutting-edge computing education since 2025.
+        </p>
+        <span class="badge badge-gold">NAAC 'A' GRADE ACCREDITED</span>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> Home</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> About
+              Department</a></li>
+          <li><a href="programme.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> MCA
+              Programme</a></li>
+          <li><a href="faculty.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> Faculty
+              Profile</a></li>
+          <li><a href="activities.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+              Activities</a></li>
+          <li><a href="events.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> Events &
+              Symposium</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Department Details -->
+      <div>
+        <h4 class="footer-heading">Department</h4>
+        <ul class="footer-links">
+          <li><a href="about.html#vision"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> Vision &
+              Mission</a></li>
+          <li><a href="programme.html#core-areas"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+              Core Curricula</a></li>
+          <li><a href="gallery.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> Department
+              Gallery</a></li>
+          <li><a href="achievements.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+              Achievements</a></li>
+          <li><a href="announcements.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+              Announcements</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i> Contact
+              Office</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Institutional Contact -->
+      <div>
+        <h4 class="footer-heading">Contact Information</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-building-columns"></i>
+          <div>
+            <strong>Department of MCA</strong><br>
+            G.T.N. Arts College (Autonomous),<br>
+            G.T.N. Nagar, Old Karur Road,<br>
+            Dindigul - 624 005, Tamil Nadu, India.
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <strong>Email:</strong><br>
+            mca@gtnartscollege.ac.in
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Compliance -->
+    <div class="container footer-bottom">
+      <div>
+        &copy; 2026 Department of Master of Computer Applications, G.T.N. Arts College (Autonomous), Dindigul. All
+        Rights Reserved.
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">Static Portal • Powered by Pure
+          HTML5 & CSS3</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Gallery Preview -->
+  <div class="lightbox-modal" id="gallery-lightbox-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close image lightbox">&times;</button>
+      <button class="lightbox-nav-btn lightbox-nav-prev" onclick="navigateLightbox(-1)" aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <div class="lightbox-image-container" id="lightbox-image-target">
+        <!-- SVG/Image injected -->
+      </div>
+      <button class="lightbox-nav-btn lightbox-nav-next" onclick="navigateLightbox(1)" aria-label="Next image">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+      <div class="lightbox-meta">
+        <div>
+          <span class="badge badge-cyan" id="lightbox-cat-target">Category</span>
+          <p id="lightbox-caption-target" style="margin-top: 0.4rem; font-size: 0.95rem;"></p>
+        </div>
+        <div id="lightbox-counter-target" style="font-family: var(--font-mono); font-size: 0.85rem; color: #94A3B8;">1
+          of 1</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Detail Modal -->
+  <div class="modal-overlay" id="event-detail-modal" role="dialog" aria-modal="true"
+    aria-labelledby="modal-event-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-cyan" id="modal-event-category">Event</span>
+          <h3 class="modal-title" id="modal-event-title" style="margin-top: 0.4rem;">Event Title</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeEventModal()" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: var(--color-bg-subtle); padding: 1rem; border-radius: 8px; margin-bottom: 1.25rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; font-size:0.88rem;">
+            <i class="fa-regular fa-calendar-days" style="color:var(--color-accent-600); width:18px;"></i>
+            <strong>Date:</strong> <span id="modal-event-date">Date</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; font-size:0.88rem;">
+            <i class="fa-regular fa-clock" style="color:var(--color-accent-600); width:18px;"></i>
+            <strong>Time:</strong> <span id="modal-event-time">Time</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.88rem;">
+            <i class="fa-solid fa-location-dot" style="color:var(--color-accent-600); width:18px;"></i>
+            <strong>Venue:</strong> <span id="modal-event-venue">Venue</span>
+          </div>
+        </div>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--color-primary-900);">Programme Details</h4>
+        <p id="modal-event-desc" style="line-height: 1.7; color: var(--color-text-muted);"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="closeEventModal()">Close</button>
+        <button class="btn btn-primary btn-sm" id="modal-event-reg-btn">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back To Top Floating Action Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Modular Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/faculty.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/announcements.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/achievements.js"></script>
+</body>
+
+</html>
