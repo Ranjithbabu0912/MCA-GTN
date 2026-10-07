@@ -2133,3 +2133,491 @@ textarea.form-control {
   transform: translateY(-3px);
   color: #FFFFFF;
 }
+
+/* --------------------------------------------------------------------------
+   21. ENHANCED EVENTS, ACHIEVEMENTS & ACTIVITIES SYSTEM
+   -------------------------------------------------------------------------- */
+/* Status Badges */
+.badge-status-completed {
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-status-ongoing {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  animation: pulseOngoing 2s infinite ease-in-out;
+}
+
+@keyframes pulseOngoing {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2); }
+  50% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+}
+
+.badge-status-upcoming {
+  background: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Event Card Graphical Banners */
+.event-card-banner.cat-workshop {
+  background: linear-gradient(135deg, #071228 0%, #0F2A52 100%);
+}
+.event-card-banner.cat-competition {
+  background: linear-gradient(135deg, #1C1917 0%, #451A03 100%);
+}
+.event-card-banner.cat-visit {
+  background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);
+}
+.event-card-banner.cat-industry {
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
+}
+.event-card-banner.cat-social {
+  background: linear-gradient(135deg, #134E4A 0%, #0F766E 100%);
+}
+.event-card-banner.cat-department {
+  background: linear-gradient(135deg, #0B1D3A 0%, #18427E 100%);
+}
+
+.event-banner-art {
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  color: rgba(255, 255, 255, 0.09);
+  font-size: 7.5rem;
+  pointer-events: none;
+  transition: transform var(--transition-normal);
+}
+
+.event-card:hover .event-banner-art {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+/* Event Timeline / Year Headers */
+.timeline-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3.5rem 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-border-subtle);
+}
+
+.timeline-year-label {
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  color: var(--color-primary-900);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.timeline-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-accent-600);
+  background: var(--color-accent-100);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+/* Filter Toolbar Layout */
+.filter-toolbar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--color-bg-surface);
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2.5rem;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-group-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 0.25rem;
+}
+
+.sort-select {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-medium);
+  background: var(--color-bg-surface);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  outline: none;
+  cursor: pointer;
+}
+.sort-select:focus {
+  border-color: var(--color-accent-500);
+}
+
+/* Distinct Achievement Cards */
+.achievement-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.achievement-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #D4AF37 0%, #00B4D8 100%);
+}
+
+.achievement-card.trophy-winner::before {
+  background: linear-gradient(90deg, #D4AF37 0%, #F59E0B 100%);
+}
+.achievement-card.national-honor::before {
+  background: linear-gradient(90deg, #8B5CF6 0%, #3B82F6 100%);
+}
+.achievement-card.ongoing-honor::before {
+  background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.achievement-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.achievement-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.achievement-icon-wrap.gold {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FCD34D;
+}
+.achievement-icon-wrap.cyan {
+  background: #E0F2FE;
+  color: #0369A1;
+  border: 1px solid #7DD3FC;
+}
+.achievement-icon-wrap.purple {
+  background: #F3E8FF;
+  color: #7E22CE;
+  border: 1px solid #D8B4FE;
+}
+.achievement-icon-wrap.emerald {
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+}
+.achievement-icon-wrap.blue {
+  background: #DBEAFE;
+  color: #1E40AF;
+  border: 1px solid #93C5FD;
+}
+
+.achievement-badge-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.achievement-badge-pill.gold {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FCD34D;
+}
+.achievement-badge-pill.cyan {
+  background: #E0F2FE;
+  color: #0284C7;
+  border: 1px solid #BAE6FD;
+}
+.achievement-badge-pill.purple {
+  background: #F5F3FF;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
+}
+.achievement-badge-pill.emerald {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+.achievement-badge-pill.blue {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.achievement-title {
+  font-size: 1.25rem;
+  color: var(--color-primary-900);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.achievement-recipient-box {
+  background: var(--color-bg-subtle);
+  border-left: 3px solid var(--color-primary-600);
+  padding: 0.65rem 0.95rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: var(--color-text-main);
+}
+
+.achievement-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.achievement-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.achievement-highlights-list li {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.achievement-highlights-list li i {
+  color: var(--color-gold-600);
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* Activity Cards */
+.activity-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent-400);
+}
+
+.activity-badge-category {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-accent-600);
+  background: var(--color-accent-100);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.activity-title {
+  font-size: 1.2rem;
+  color: var(--color-primary-900);
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+}
+
+.activity-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.activity-volunteers-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+}
+
+.activity-volunteers-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.activity-volunteers-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.activity-volunteer-tag {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  color: var(--color-text-main);
+}
+
+/* Modal Detailed Sections */
+.modal-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  background: var(--color-bg-subtle);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+}
+
+.modal-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--color-text-main);
+}
+
+.modal-meta-item i {
+  color: var(--color-accent-600);
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.modal-section-title {
+  font-size: 1.05rem;
+  color: var(--color-primary-900);
+  margin: 1.25rem 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.modal-highlights-list li {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.modal-highlights-list li i {
+  color: var(--color-accent-500);
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.modal-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.modal-tag-chip {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
+.modal-accolade-box {
+  background: #FFFBEB;
+  border: 1px solid #FCD34D;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}

@@ -41,6 +41,11 @@ function initMobileNavigation() {
     backdrop.addEventListener('click', () => toggleMenu(false));
   }
 
+  const closeBtn = document.querySelector('.mobile-nav-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => toggleMenu(false));
+  }
+
   // Close when pressing Escape
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('active')) {
@@ -51,7 +56,7 @@ function initMobileNavigation() {
   // Close when clicking any nav link on mobile
   navLinks.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      if (window.innerWidth <= 992) {
+      if (window.innerWidth <= 1080) {
         toggleMenu(false);
       }
     });

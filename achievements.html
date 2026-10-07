@@ -105,8 +105,17 @@
           </p>
         </div>
 
+        <!-- Filter Toolbar -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin: 2rem 0 2.5rem 0;">
+          <button class="filter-btn ach-filter-btn active" data-category="all">All Honors & Achievements</button>
+          <button class="filter-btn ach-filter-btn" data-category="competition">Intercollegiate & Hackathons</button>
+          <button class="filter-btn ach-filter-btn" data-category="national">National Delegations & Youth</button>
+          <button class="filter-btn ach-filter-btn" data-category="institutional">Annual Day & Institutional Honors</button>
+          <button class="filter-btn ach-filter-btn" data-category="innovation">Innovation & Extracurriculars</button>
+        </div>
+
         <!-- Rendered dynamically via js/achievements.js -->
-        <div class="mission-grid" id="achievements-grid-container">
+        <div class="events-grid" id="achievements-grid-container">
           <!-- Populated by js/achievements.js -->
         </div>
 
@@ -252,12 +261,34 @@
     </div>
   </footer>
 
+  <!-- EVENT DETAIL ACCESSIBLE MODAL FOR CONNECTED ACHIEVEMENTS -->
+  <div class="modal-overlay" id="event-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-cyan" id="modal-event-category">Category</span>
+          <h3 class="modal-title" id="modal-event-title" style="margin-top: 0.4rem;">Title</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeEventModal()" aria-label="Close event details">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Injected dynamically by js/events.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="closeEventModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
 
+  <script src="js/data/events.js"></script>
+  <script src="js/data/achievements.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/events.js"></script>
   <script src="js/achievements.js"></script>
 </body>
 </html>
