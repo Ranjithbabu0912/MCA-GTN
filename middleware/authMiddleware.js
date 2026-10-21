@@ -4,7 +4,7 @@ const JWT_SECRET = () => process.env.JWT_SECRET || 'mca_gtn_secret_jwt_key_2026'
 
 function authMiddleware(req, res, next) {
   require('dotenv').config();
-  const adminPin = (process.env.ADMIN_PIN || '').trim();
+  const adminPin = (process.env.ADMIN_PIN || 'admin@1234').trim();
 
   // Allow passing either JWT token or direct admin PIN
   const authHeader = req.headers.authorization;

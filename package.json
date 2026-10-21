@@ -19,7 +19,7 @@
     "mongodb-atlas",
     "express"
   ],
-  "author": "Department of MCA, G.T.N. Arts College",
+  "author": "Ranjith Babu S",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",

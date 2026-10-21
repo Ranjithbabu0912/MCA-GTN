@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = () => process.env.JWT_SECRET || "mca_gtn_secret_jwt_key_2026";
 const getAdminUser = () => (process.env.ADMIN_USER || process.env.ADMIN_USERNAME || "admin").trim();
-const getAdminPassword = () => (process.env.ADMIN_PASSWORD || "").trim();
-const getAdminPin = () => (process.env.ADMIN_PIN || "").trim();
+const getAdminPassword = () => (process.env.ADMIN_PASSWORD || "admin@1234").trim();
+const getAdminPin = () => (process.env.ADMIN_PIN || "admin@1234").trim();
 
 /**
  * POST /api/auth/login

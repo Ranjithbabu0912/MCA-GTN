@@ -219,8 +219,11 @@ async function syncGalleryFromAPI() {
       res = await fetch('/api/gallery');
       if (!res.ok) throw new Error('status ' + res.status);
     } catch (e) {
-      // Fallback for python http.server or static hosts
-      res = await fetch('http://localhost:5000/api/gallery');
+      if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+        res = await fetch('http://localhost:5000/api/gallery');
+      } else {
+        throw e;
+      }
     }
     if (res && res.ok) {
       const data = await res.json();
