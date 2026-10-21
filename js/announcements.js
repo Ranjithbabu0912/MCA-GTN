@@ -7,68 +7,8 @@
  * Centralized circulars and notifications for the MCA department.
  */
 
-const mcaAnnouncements = [
-  {
-    id: "ann-01",
-    title: "MCA Admissions 2026-2027: Applications Invited",
-    date: "2026-10-05",
-    displayDate: "October 05, 2026",
-    isImportant: true,
-    isLatest: true,
-    category: "Admissions",
-    description: "Online and in-person applications are open for the 2-Year Master of Computer Applications (MCA) postgraduate degree programme. Candidates with BCA / B.Sc (CS/IT) or equivalent degree with Mathematics at 10+2/Graduation level may apply.",
-    linkText: "View Eligibility",
-    linkUrl: "programme.html#eligibility"
-  },
-  {
-    id: "ann-02",
-    title: "National Technical Symposium CYBERNAUT 2026 — Registration Schedule",
-    date: "2026-10-01",
-    displayDate: "October 01, 2026",
-    isImportant: true,
-    isLatest: false,
-    category: "Events",
-    description: "Registration for CYBERNAUT 2026 has officially commenced. Department student representatives are requested to coordinate internal college teams for paper presentation and coding hackathons.",
-    linkText: "View Event Details",
-    linkUrl: "events.html"
-  },
-  {
-    id: "ann-03",
-    title: "Commencement of Special Elective in Generative AI and Cloud Systems",
-    date: "2026-09-18",
-    displayDate: "September 18, 2026",
-    isImportant: false,
-    isLatest: false,
-    category: "Academics",
-    description: "The department announces the syllabus rollout for advanced elective modules encompassing Transformer Architectures, Prompt Engineering, and Cloud Native deployment strategies.",
-    linkText: "View Curriculum",
-    linkUrl: "programme.html"
-  },
-  {
-    id: "ann-04",
-    title: "Inauguration of Department Student Computer Association",
-    date: "2026-08-25",
-    displayDate: "August 25, 2026",
-    isImportant: false,
-    isLatest: false,
-    category: "Association",
-    description: "The MCA Student Association was formally inaugurated with student office bearers sworn in. The association drives weekly coding clinics, tech seminars, and peer-mentorship sessions.",
-    linkText: "View Activities",
-    linkUrl: "activities.html"
-  },
-  {
-    id: "ann-05",
-    title: "TANCET / NIMCET Academic Guidance Desk for Aspirants",
-    date: "2026-08-10",
-    displayDate: "August 10, 2026",
-    isImportant: false,
-    isLatest: false,
-    category: "Admissions",
-    description: "A free advisory help desk has been instituted in the MCA Department block to assist prospective candidates with Tamil Nadu Common Entrance Test guidance and counseling procedures.",
-    linkText: "Contact Department",
-    linkUrl: "contact.html"
-  }
-];
+// Local data removed - live synchronized from MongoDB Atlas API
+const mcaAnnouncements = [];
 
 /**
  * Render marquee ticker items on Header / Hero
@@ -135,8 +75,60 @@ function renderHomeAnnouncementsWidget(containerId = "home-announcements-widget"
   `).join('');
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderTickerAnnouncements();
-  renderAnnouncementsPage();
-  renderHomeAnnouncementsWidget();
-});
+async function syncAnnouncementsFromAPI() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    let res;
+    try {
+      res = await fetch('/api/announcements');
+      if (!res.ok) throw new Error('status ' + res.status);
+    } catch (e) {
+      // Fallback for python http.server or static hosts
+      res = await fetch('http://localhost:5000/api/announcements');
+    }
+    if (res && res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        mcaAnnouncements.length = 0;
+        mcaAnnouncements.push(...data.data);
+        renderTickerAnnouncements();
+        renderAnnouncementsPage();
+        renderHomeAnnouncementsWidget();
+      }
+    }
+  } catch (e) {
+    // Graceful fallback to static array
+  }
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener("DOMContentLoaded", () => {
+    renderTickerAnnouncements();
+    renderAnnouncementsPage();
+    renderHomeAnnouncementsWidget();
+    syncAnnouncementsFromAPI();
+  });
+
+  // Real-time synchronization when admin saves changes
+  try {
+    if (typeof BroadcastChannel !== 'undefined') {
+      const ch = new BroadcastChannel('mca_sync_channel');
+      ch.onmessage = (e) => {
+        if (!e.data || !e.data.entity || e.data.entity === 'announcements') {
+          syncAnnouncementsFromAPI();
+        }
+      };
+    }
+  } catch (e) {}
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'mca_live_update_timestamp') {
+      syncAnnouncementsFromAPI();
+    }
+  });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { mcaAnnouncements };
+}
+

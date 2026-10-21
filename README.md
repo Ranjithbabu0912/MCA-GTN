@@ -76,17 +76,35 @@ Right-click on `index.html` inside VS Code and select **"Open with Live Server"*
 
 ---
 
-## 🛠️ Content Management (No Admin Required)
+## 🛠️ Content Management & Admin Module (CRUD)
 
-To update website content without altering HTML templates or layout code, edit the dedicated JavaScript data files inside `js/`:
+The website includes a full **Admin Module** powered by a **MERN Stack** (MongoDB/Mongoose + Express.js + Node.js) with real-time UI controls to perform Create, Read, Update, and Delete (CRUD) operations without writing code.
 
-| To Update | Edit File | Description |
-| :--- | :--- | :--- |
-| **Faculty Records** | `js/faculty.js` | Add or update faculty names, designations, and qualifications in `facultyMembers`. |
-| **Events & Symposiums** | `js/events.js` | Add upcoming workshops or symposium details in `mcaEvents`. |
-| **Circulars & Ticker** | `js/announcements.js` | Add notices or admission deadlines in `mcaAnnouncements`. |
-| **Photo Gallery** | `js/gallery.js` | Add gallery items and captions in `mcaGalleryItems`. |
-| **Milestones & Awards** | `js/achievements.js` | Add verified accolades in `mcaAchievements`. |
+### 🔐 Accessing the Admin Portal
+- **URL:** `http://localhost:5000/admin.html` (or click "Admin Portal" in the site footer)
+- **Security Access:**
+  - **Quick PIN:** `admin123`
+  - **Username / Password:** `admin` / `admin123`
+
+### ⚡ Supported CRUD Modules
+1. **Announcements:** Post circulars, mark as Important/Latest, set custom links, edit dates, and delete notices.
+2. **Achievements:** Manage student accolades, academic trophies, hackathon wins, and company placement highlights.
+3. **Gallery & Media:** Upload event photos via Multer to `/assets/uploads/`, manage captions, dates, and categories.
+4. **Events & Workshops:** Schedule symposiums, workshops, guest lectures, set venues, speakers, and registration links.
+5. **Faculty Details:** Update profile photos, academic qualifications, research specializations, and bios.
+
+### 🌐 REST API Endpoints
+All admin routes are protected by JWT Bearer tokens or security PIN headers:
+- `POST /api/auth/login` — Authentication & JWT generation
+- `/api/announcements` — `GET`, `POST`, `PUT /:id`, `DELETE /:id`
+- `/api/achievements` — `GET`, `POST`, `PUT /:id`, `DELETE /:id`
+- `/api/gallery` — `GET`, `POST`, `PUT /:id`, `DELETE /:id`
+- `/api/events` — `GET`, `POST`, `PUT /:id`, `DELETE /:id`
+- `/api/faculty` — `GET`, `POST`, `PUT /:id`, `DELETE /:id`
+- `POST /api/upload` — Multipart image upload (JPEG, PNG, WebP, SVG)
+
+### 💾 Cloud Database Architecture
+The backend connects directly to **MongoDB Atlas Cloud Database** (`MONGODB_URI` in `.env`). All CRUD operations for Announcements, Achievements, Gallery, Events, and Faculty profiles are synchronized in real-time with zero local data dependency.
 
 ---
 

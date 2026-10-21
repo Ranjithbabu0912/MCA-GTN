@@ -8,89 +8,8 @@
  * fullscreen lightbox, keyboard navigation, and caption rendering.
  */
 
-const mcaGalleryItems = [
-  {
-    id: "gal-01",
-    title: "Advanced MCA Computer Laboratory",
-    category: "Department",
-    categoryLabel: "Department",
-    caption: "High-performance computing laboratory equipped with dual-boot Linux/Windows workstations, high-speed campus LAN, and enterprise development suites.",
-    themeColor: "#0B1D3A",
-    icon: "fa-desktop"
-  },
-  {
-    id: "gal-02",
-    title: "National Technical Symposium Inauguration",
-    category: "Events",
-    categoryLabel: "Events",
-    caption: "Dignitaries, faculty, and student organizers at the ceremonial lighting of the lamp during CYBERNAUT Technical Symposium.",
-    themeColor: "#102A54",
-    icon: "fa-award"
-  },
-  {
-    id: "gal-03",
-    title: "Hands-on Workshop in Cloud Architecture",
-    category: "Workshops",
-    categoryLabel: "Workshops",
-    caption: "MCA postgraduate scholars configuring distributed container networks during an intensive industry-led technical workshop.",
-    themeColor: "#18427E",
-    icon: "fa-cloud"
-  },
-  {
-    id: "gal-04",
-    title: "Technical Seminar on Ethical Artificial Intelligence",
-    category: "Seminars",
-    categoryLabel: "Seminars",
-    caption: "Invited keynote speaker addressing postgraduate scholars on ethical considerations, fairness, and safety in modern machine learning systems.",
-    themeColor: "#0A1935",
-    icon: "fa-brain"
-  },
-  {
-    id: "gal-05",
-    title: "Student Coding Hackathon & Brainstorming",
-    category: "Student Activities",
-    categoryLabel: "Student Activities",
-    caption: "Student teams collaborating during the 12-hour departmental coding sprint solving algorithmic challenges.",
-    themeColor: "#0077B6",
-    icon: "fa-code"
-  },
-  {
-    id: "gal-06",
-    title: "Faculty Academic Mentorship & Planning",
-    category: "Faculty Activities",
-    categoryLabel: "Faculty Activities",
-    caption: "Department faculty members reviewing curriculum updates and postgraduate project mentorship milestones.",
-    themeColor: "#1E5BB0",
-    icon: "fa-chalkboard-user"
-  },
-  {
-    id: "gal-07",
-    title: "G.T.N. Arts College Scenic Campus Greenery",
-    category: "Campus",
-    categoryLabel: "Campus",
-    caption: "The serene and verdant academic campus of G.T.N. Arts College (Autonomous), fostering focused postgraduate studies.",
-    themeColor: "#0B2B26",
-    icon: "fa-landmark"
-  },
-  {
-    id: "gal-08",
-    title: "Inter-Collegiate Trophy Winners Celebration",
-    category: "Achievements",
-    categoryLabel: "Achievements",
-    caption: "MCA scholars holding the overall championship trophy won at state-level computational competitions.",
-    themeColor: "#B89528",
-    icon: "fa-trophy"
-  },
-  {
-    id: "gal-09",
-    title: "MCA Smart Audio-Visual Seminar Hall",
-    category: "Department",
-    categoryLabel: "Department",
-    caption: "Acoustically treated multimedia seminar hall equipped with interactive projection and video conferencing facilities.",
-    themeColor: "#071228",
-    icon: "fa-display"
-  }
-];
+// Local data removed - live synchronized from MongoDB Atlas API
+const mcaGalleryItems = [];
 
 let activeGalleryCategory = "all";
 let currentLightboxIndex = 0;
@@ -148,6 +67,13 @@ function generateGalleryVisualSVG(item) {
   `;
 }
 
+function generateGalleryVisual(item) {
+  if (item.image && item.image !== "assets/images/placeholder.jpg") {
+    return `<img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.outerHTML=generateGalleryVisualSVG(${JSON.stringify(item).replace(/"/g, '&quot;')});">`;
+  }
+  return generateGalleryVisualSVG(item);
+}
+
 /**
  * Render Gallery cards into container
  */
@@ -172,7 +98,7 @@ function renderGallery(containerId = "gallery-grid-container") {
 
   container.innerHTML = currentVisibleGalleryItems.map((item, index) => `
     <article class="gallery-card" onclick="openLightbox(${index})" tabindex="0" role="button" aria-label="View ${item.title} in lightbox" onkeydown="if(event.key==='Enter'||event.key===' ')openLightbox(${index})">
-      ${generateGalleryVisualSVG(item)}
+      ${generateGalleryVisual(item)}
       <div class="gallery-overlay">
         <span class="gallery-category-tag">${item.categoryLabel}</span>
         <h3 class="gallery-caption">${item.title}</h3>
@@ -191,7 +117,7 @@ function renderHomeGalleryPreview(containerId = "home-gallery-grid") {
   const previewItems = mcaGalleryItems.slice(0, 6);
   container.innerHTML = previewItems.map((item, index) => `
     <article class="gallery-card" onclick="openHomePreviewLightbox(${index})" tabindex="0" role="button" aria-label="View ${item.title}">
-      ${generateGalleryVisualSVG(item)}
+      ${generateGalleryVisual(item)}
       <div class="gallery-overlay">
         <span class="gallery-category-tag">${item.categoryLabel}</span>
         <h4 class="gallery-caption">${item.title}</h4>
@@ -243,10 +169,10 @@ function updateLightboxContent() {
   const catEl = document.getElementById("lightbox-cat-target");
 
   if (imgContainer) {
-    imgContainer.innerHTML = generateGalleryVisualSVG(item);
+    imgContainer.innerHTML = generateGalleryVisual(item);
   }
   if (captionEl) {
-    captionEl.textContent = `${item.title} — ${item.caption}`;
+    captionEl.textContent = `${item.title} — ${item.caption || item.description || ''}`;
   }
   if (counterEl) {
     counterEl.textContent = `${currentLightboxIndex + 1} of ${currentVisibleGalleryItems.length}`;
@@ -285,8 +211,59 @@ function setupGalleryUI() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderGallery();
-  renderHomeGalleryPreview();
-  setupGalleryUI();
-});
+async function syncGalleryFromAPI() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    let res;
+    try {
+      res = await fetch('/api/gallery');
+      if (!res.ok) throw new Error('status ' + res.status);
+    } catch (e) {
+      // Fallback for python http.server or static hosts
+      res = await fetch('http://localhost:5000/api/gallery');
+    }
+    if (res && res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        mcaGalleryItems.length = 0;
+        mcaGalleryItems.push(...data.data);
+        renderGallery();
+        renderHomeGalleryPreview();
+      }
+    }
+  } catch (e) {
+    // Graceful fallback to static array
+  }
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener("DOMContentLoaded", () => {
+    renderGallery();
+    renderHomeGalleryPreview();
+    setupGalleryUI();
+    syncGalleryFromAPI();
+  });
+
+  // Real-time synchronization when admin saves changes
+  try {
+    if (typeof BroadcastChannel !== 'undefined') {
+      const ch = new BroadcastChannel('mca_sync_channel');
+      ch.onmessage = (e) => {
+        if (!e.data || !e.data.entity || e.data.entity === 'gallery') {
+          syncGalleryFromAPI();
+        }
+      };
+    }
+  } catch (e) {}
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'mca_live_update_timestamp') {
+      syncGalleryFromAPI();
+    }
+  });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { mcaGalleryItems };
+}
+

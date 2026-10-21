@@ -111,8 +111,18 @@ function createAchievementCardHTML(item) {
     </button>
   ` : '';
 
+  let imageHTML = "";
+  if (item.image && item.image !== "assets/images/placeholder.jpg") {
+    imageHTML = `
+      <div style="margin: -1.75rem -1.75rem 1.25rem -1.75rem; overflow: hidden; border-radius: 12px 12px 0 0; max-height: 220px; background: #071228;">
+        <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 220px; object-fit: cover; display: block;" onerror="this.parentElement.style.display='none';">
+      </div>
+    `;
+  }
+
   return `
     <article class="${cardClass}" id="${item.id}">
+      ${imageHTML}
       <div class="achievement-topbar">
         <div class="achievement-icon-wrap ${badgeColor}">
           <i class="${iconClass}" aria-hidden="true"></i>
@@ -247,8 +257,56 @@ function setupAchievementsUI() {
   });
 }
 
+async function syncAchievementsFromAPI() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    let res;
+    try {
+      res = await fetch('/api/achievements');
+      if (!res.ok) throw new Error('status ' + res.status);
+    } catch (e) {
+      // Fallback for python http.server or static hosts
+      res = await fetch('http://localhost:5000/api/achievements');
+    }
+    if (res && res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (typeof window !== 'undefined') {
+          window.mcaAchievementsData = data.data;
+        }
+        renderAchievementsPage();
+        renderHomeAchievementsPreview();
+      }
+    }
+  } catch (e) {
+    // Graceful fallback to static array
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderAchievementsPage();
   renderHomeAchievementsPreview();
   setupAchievementsUI();
+  syncAchievementsFromAPI();
 });
+
+// Real-time synchronization when admin saves changes
+if (typeof window !== "undefined") {
+  try {
+    if (typeof BroadcastChannel !== "undefined") {
+      const ch = new BroadcastChannel("mca_sync_channel");
+      ch.onmessage = (e) => {
+        if (!e.data || !e.data.entity || e.data.entity === "achievements") {
+          syncAchievementsFromAPI();
+        }
+      };
+    }
+  } catch (e) {}
+
+  window.addEventListener("storage", (e) => {
+    if (e.key === "mca_live_update_timestamp") {
+      syncAchievementsFromAPI();
+    }
+  });
+}
+

@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Department of MCA - G.T.N. Arts College</title>
+  <meta name="description" content="Administrative Control Portal for managing Announcements, Achievements, Gallery, Events, and Faculty profiles for the MCA Department.">
+  <link rel="icon" type="image/png" href="assets/logos/mca-official-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="admin-body">
+
+  <!-- ======================================================================
+       LOGIN SCREEN OVERLAY (PIN / USER AUTH)
+       ====================================================================== -->
+  <div class="admin-login-screen" id="adminLoginScreen">
+    <div class="admin-login-card">
+      <div class="admin-login-logo">
+        <img src="assets/logos/mca-official-logo.png" alt="MCA Logo" onerror="this.src='assets/logos/gtn-logo.png'">
+      </div>
+      <h1 class="admin-login-title">MCA Admin Portal</h1>
+      <p class="admin-login-sub">G.T.N. Arts College (Autonomous), Dindigul</p>
+
+      <div class="admin-login-tabs">
+        <button type="button" class="admin-login-tab active" id="tabPinBtn">PIN Quick Access</button>
+        <button type="button" class="admin-login-tab" id="tabUserBtn">User Login</button>
+      </div>
+
+      <!-- PIN Form -->
+      <form id="pinLoginForm">
+        <div class="admin-input-group">
+          <label class="admin-input-label" for="adminPinInput">Security PIN</label>
+          <div style="position: relative;">
+            <input type="password" id="adminPinInput" class="admin-input-field" placeholder="Enter security PIN" autocomplete="current-password" autofocus required>
+            <button type="button" class="btn-toggle-pin" id="togglePinVis" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94A3B8; cursor: pointer;">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="admin-login-btn">
+          <i class="fa-solid fa-arrow-right-to-bracket" style="margin-right: 6px;"></i> Unlock Admin Portal
+        </button>
+      </form>
+
+      <!-- Username / Password Form (Hidden by default) -->
+      <form id="userLoginForm" style="display: none;">
+        <div class="admin-input-group">
+          <label class="admin-input-label" for="adminUsernameInput">Username</label>
+          <input type="text" id="adminUsernameInput" class="admin-input-field" placeholder="e.g. admin" autocomplete="username">
+        </div>
+        <div class="admin-input-group">
+          <label class="admin-input-label" for="adminPasswordInput">Password</label>
+          <input type="password" id="adminPasswordInput" class="admin-input-field" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button type="submit" class="admin-login-btn">
+          <i class="fa-solid fa-shield-halved" style="margin-right: 6px;"></i> Login with Credentials
+        </button>
+      </form>
+
+      <div class="admin-login-hint">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Default PIN: <strong>admin123</strong> | User: <strong>admin</strong> / <strong>admin123</strong></span>
+      </div>
+
+      <div style="margin-top: 1.25rem;">
+        <a href="index.html" class="admin-public-link" style="color: #64748B; background: transparent;">
+          <i class="fa-solid fa-arrow-left"></i> Return to Department Website
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       ADMIN SIDEBAR NAVIGATION
+       ====================================================================== -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-header">
+      <img src="assets/logos/mca-official-logo.png" alt="MCA Logo" onerror="this.src='assets/logos/gtn-logo.png'">
+      <div class="admin-sidebar-brand">
+        <span class="admin-brand-college">G.T.N. Arts College</span>
+        <span class="admin-brand-dept">MCA Admin</span>
+      </div>
+    </div>
+
+    <ul class="admin-sidebar-nav">
+      <li class="admin-nav-item active" data-tab="dashboard">
+        <button type="button">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Dashboard</span>
+        </button>
+      </li>
+      <li class="admin-nav-item" data-tab="announcements">
+        <button type="button">
+          <i class="fa-solid fa-bullhorn"></i>
+          <span>Announcements</span>
+          <span class="admin-nav-badge" id="badgeAnnouncements">0</span>
+        </button>
+      </li>
+      <li class="admin-nav-item" data-tab="achievements">
+        <button type="button">
+          <i class="fa-solid fa-trophy"></i>
+          <span>Achievements</span>
+          <span class="admin-nav-badge" id="badgeAchievements">0</span>
+        </button>
+      </li>
+      <li class="admin-nav-item" data-tab="gallery">
+        <button type="button">
+          <i class="fa-solid fa-images"></i>
+          <span>Gallery</span>
+          <span class="admin-nav-badge" id="badgeGallery">0</span>
+        </button>
+      </li>
+      <li class="admin-nav-item" data-tab="events">
+        <button type="button">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>Events</span>
+          <span class="admin-nav-badge" id="badgeEvents">0</span>
+        </button>
+      </li>
+      <li class="admin-nav-item" data-tab="faculty">
+        <button type="button">
+          <i class="fa-solid fa-user-tie"></i>
+          <span>Faculty Details</span>
+          <span class="admin-nav-badge" id="badgeFaculty">0</span>
+        </button>
+      </li>
+    </ul>
+
+    <div class="admin-sidebar-footer">
+      <a href="index.html" target="_blank" class="admin-public-link">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span>Live Public Site</span>
+      </a>
+      <button type="button" class="admin-logout-btn" id="adminLogoutBtn">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Sign Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       ADMIN MAIN CONTENT AREA
+       ====================================================================== -->
+  <main class="admin-main">
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-left">
+        <button type="button" class="admin-mobile-toggle" id="adminSidebarToggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="admin-page-title" id="adminPageTitle">Dashboard Overview</h2>
+      </div>
+      <div class="admin-topbar-right">
+        <div class="admin-status-pill">
+          <span class="admin-status-dot"></span>
+          <span id="apiStatusText">REST API Connected</span>
+        </div>
+        <div class="admin-user-pill">
+          <div class="admin-user-avatar">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <span id="adminUserGreeting">Administrator</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container Panels -->
+    <div class="admin-container">
+
+      <!-- ================================================================
+           PANEL 1: DASHBOARD OVERVIEW
+           ================================================================ -->
+      <section class="admin-panel active" id="panel-dashboard">
+        <!-- Metrics Row -->
+        <div class="admin-metrics-grid">
+          <div class="admin-metric-card" onclick="switchTab('announcements')" style="cursor: pointer;">
+            <div class="admin-metric-icon blue">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <div class="admin-metric-info">
+              <span class="admin-metric-num" id="statAnnouncements">0</span>
+              <span class="admin-metric-label">Announcements</span>
+            </div>
+          </div>
+
+          <div class="admin-metric-card" onclick="switchTab('achievements')" style="cursor: pointer;">
+            <div class="admin-metric-icon gold">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="admin-metric-info">
+              <span class="admin-metric-num" id="statAchievements">0</span>
+              <span class="admin-metric-label">Achievements</span>
+            </div>
+          </div>
+
+          <div class="admin-metric-card" onclick="switchTab('gallery')" style="cursor: pointer;">
+            <div class="admin-metric-icon emerald">
+              <i class="fa-solid fa-images"></i>
+            </div>
+            <div class="admin-metric-info">
+              <span class="admin-metric-num" id="statGallery">0</span>
+              <span class="admin-metric-label">Gallery Photos</span>
+            </div>
+          </div>
+
+          <div class="admin-metric-card" onclick="switchTab('events')" style="cursor: pointer;">
+            <div class="admin-metric-icon purple">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <div class="admin-metric-info">
+              <span class="admin-metric-num" id="statEvents">0</span>
+              <span class="admin-metric-label">Department Events</span>
+            </div>
+          </div>
+
+          <div class="admin-metric-card" onclick="switchTab('faculty')" style="cursor: pointer;">
+            <div class="admin-metric-icon cyan">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="admin-metric-info">
+              <span class="admin-metric-num" id="statFaculty">0</span>
+              <span class="admin-metric-label">Faculty Members</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Recent Summary -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+          <!-- Quick CRUD Actions -->
+          <div class="admin-card-table" style="padding: 1.5rem;">
+            <h3 style="font-size: 1.1rem; color: var(--admin-navy-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-bolt" style="color: var(--admin-accent-gold);"></i> Quick Create Actions
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--admin-text-muted); margin-bottom: 1.25rem;">
+              Instantly add new announcements, achievements, events, photos, or faculty records to the website.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <button type="button" class="admin-btn-create" onclick="openCreateModal('announcement')" style="width: 100%; justify-content: center;">
+                <i class="fa-solid fa-plus"></i> Post New Announcement
+              </button>
+              <button type="button" class="admin-btn-create" onclick="openCreateModal('achievement')" style="width: 100%; justify-content: center; background: #D97706;">
+                <i class="fa-solid fa-plus"></i> Add Student Achievement
+              </button>
+              <button type="button" class="admin-btn-create" onclick="openCreateModal('event')" style="width: 100%; justify-content: center; background: #7C3AED;">
+                <i class="fa-solid fa-plus"></i> Schedule New Event
+              </button>
+              <button type="button" class="admin-btn-create" onclick="openCreateModal('gallery')" style="width: 100%; justify-content: center; background: #059669;">
+                <i class="fa-solid fa-plus"></i> Add Gallery Item
+              </button>
+            </div>
+          </div>
+
+          <!-- System Status & Instructions -->
+          <div class="admin-card-table" style="padding: 1.5rem;">
+            <h3 style="font-size: 1.1rem; color: var(--admin-navy-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-server" style="color: var(--admin-primary);"></i> System Status & Architecture
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.86rem; color: #334155;">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
+                <span style="font-weight: 600;">Backend Runtime:</span>
+                <span style="font-family: monospace; color: #0284C7; font-weight: 700;">Node.js Express + Mongoose</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
+                <span style="font-weight: 600;">Data Layer:</span>
+                <span id="statusDataLayerBadge" style="background: #ECFDF5; color: #059669; padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.78rem;">MongoDB / Persistent JSON Active</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
+                <span style="font-weight: 600;">Security Token:</span>
+                <span style="color: #64748B;">JWT Bearer Authentication</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
+                <span style="font-weight: 600;">Media Storage:</span>
+                <span style="color: #64748B;">/assets/uploads/ via Multer</span>
+              </div>
+              <div style="margin-top: 0.5rem; padding: 0.75rem; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0; font-size: 0.8rem; color: #64748B;">
+                <i class="fa-solid fa-lightbulb" style="color: #F59E0B; margin-right: 4px;"></i>
+                Changes made in this admin module take effect immediately on the live college MCA portal without rebuilding or page recoding!
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           PANEL 2: ANNOUNCEMENTS CRUD
+           ================================================================ -->
+      <section class="admin-panel" id="panel-announcements">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar-left">
+            <div class="admin-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchAnnouncements" class="admin-search-input" placeholder="Search announcements by title or description...">
+            </div>
+            <select id="filterCategoryAnnouncements" class="admin-input-field" style="width: auto; padding: 0.55rem 0.85rem; font-size: 0.85rem;">
+              <option value="">All Categories</option>
+              <option value="Admissions">Admissions</option>
+              <option value="Events">Events</option>
+              <option value="Academics">Academics</option>
+              <option value="Association">Association</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+          <button type="button" class="admin-btn-create" onclick="openCreateModal('announcement')">
+            <i class="fa-solid fa-plus"></i> Add Announcement
+          </button>
+        </div>
+
+        <div class="admin-card-table">
+          <div class="admin-table-responsive">
+            <table class="admin-table" id="tableAnnouncements">
+              <thead>
+                <tr>
+                  <th style="width: 32%;">Title</th>
+                  <th style="width: 14%;">Category</th>
+                  <th style="width: 16%;">Date</th>
+                  <th style="width: 18%;">Badges</th>
+                  <th style="width: 10%; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyAnnouncements">
+                <!-- Dynamically populated via js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           PANEL 3: ACHIEVEMENTS CRUD
+           ================================================================ -->
+      <section class="admin-panel" id="panel-achievements">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar-left">
+            <div class="admin-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchAchievements" class="admin-search-input" placeholder="Search achievements by student, title, org...">
+            </div>
+            <select id="filterCategoryAchievements" class="admin-input-field" style="width: auto; padding: 0.55rem 0.85rem; font-size: 0.85rem;">
+              <option value="">All Categories</option>
+              <option value="Placements">Placements</option>
+              <option value="Academic">Academic</option>
+              <option value="Hackathon">Hackathons</option>
+              <option value="Sports">Sports</option>
+              <option value="Certifications">Certifications</option>
+            </select>
+          </div>
+          <button type="button" class="admin-btn-create" onclick="openCreateModal('achievement')" style="background: #D97706;">
+            <i class="fa-solid fa-plus"></i> Add Achievement
+          </button>
+        </div>
+
+        <div class="admin-card-table">
+          <div class="admin-table-responsive">
+            <table class="admin-table" id="tableAchievements">
+              <thead>
+                <tr>
+                  <th style="width: 10%;">Media</th>
+                  <th style="width: 25%;">Achievement Title</th>
+                  <th style="width: 18%;">Student / Team</th>
+                  <th style="width: 12%;">Year</th>
+                  <th style="width: 15%;">Company / Org</th>
+                  <th style="width: 10%;">Category</th>
+                  <th style="width: 10%; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyAchievements">
+                <!-- Dynamically populated via js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           PANEL 4: GALLERY CRUD
+           ================================================================ -->
+      <section class="admin-panel" id="panel-gallery">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar-left">
+            <div class="admin-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchGallery" class="admin-search-input" placeholder="Search gallery by caption or title...">
+            </div>
+            <select id="filterCategoryGallery" class="admin-input-field" style="width: auto; padding: 0.55rem 0.85rem; font-size: 0.85rem;">
+              <option value="">All Categories</option>
+              <option value="Campus">Campus</option>
+              <option value="Events">Events</option>
+              <option value="Labs">Labs & Infra</option>
+              <option value="Seminars">Seminars</option>
+              <option value="Sports">Sports</option>
+            </select>
+          </div>
+          <button type="button" class="admin-btn-create" onclick="openCreateModal('gallery')" style="background: #059669;">
+            <i class="fa-solid fa-plus"></i> Upload Photo / Item
+          </button>
+        </div>
+
+        <div class="admin-card-table">
+          <div class="admin-table-responsive">
+            <table class="admin-table" id="tableGallery">
+              <thead>
+                <tr>
+                  <th style="width: 12%;">Preview</th>
+                  <th style="width: 30%;">Title / Caption</th>
+                  <th style="width: 18%;">Category</th>
+                  <th style="width: 18%;">Date Added</th>
+                  <th style="width: 12%; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyGallery">
+                <!-- Dynamically populated via js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           PANEL 5: EVENTS CRUD
+           ================================================================ -->
+      <section class="admin-panel" id="panel-events">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar-left">
+            <div class="admin-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchEvents" class="admin-search-input" placeholder="Search events by title, venue, speaker...">
+            </div>
+            <select id="filterStatusEvents" class="admin-input-field" style="width: auto; padding: 0.55rem 0.85rem; font-size: 0.85rem;">
+              <option value="">All Statuses</option>
+              <option value="Upcoming">Upcoming</option>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+          <button type="button" class="admin-btn-create" onclick="openCreateModal('event')" style="background: #7C3AED;">
+            <i class="fa-solid fa-plus"></i> Schedule Event
+          </button>
+        </div>
+
+        <div class="admin-card-table">
+          <div class="admin-table-responsive">
+            <table class="admin-table" id="tableEvents">
+              <thead>
+                <tr>
+                  <th style="width: 28%;">Event Title</th>
+                  <th style="width: 16%;">Date & Time</th>
+                  <th style="width: 18%;">Venue</th>
+                  <th style="width: 14%;">Category</th>
+                  <th style="width: 14%;">Status</th>
+                  <th style="width: 10%; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyEvents">
+                <!-- Dynamically populated via js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           PANEL 6: FACULTY DETAILS CRUD
+           ================================================================ -->
+      <section class="admin-panel" id="panel-faculty">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar-left">
+            <div class="admin-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchFaculty" class="admin-search-input" placeholder="Search faculty by name, qualification, specialization...">
+            </div>
+          </div>
+          <button type="button" class="admin-btn-create" onclick="openCreateModal('faculty')" style="background: #0284C7;">
+            <i class="fa-solid fa-user-plus"></i> Add Faculty Member
+          </button>
+        </div>
+
+        <div class="admin-card-table">
+          <div class="admin-table-responsive">
+            <table class="admin-table" id="tableFaculty">
+              <thead>
+                <tr>
+                  <th style="width: 8%;">Order</th>
+                  <th style="width: 14%;">Faculty ID</th>
+                  <th style="width: 8%;">Photo</th>
+                  <th style="width: 22%;">Name</th>
+                  <th style="width: 18%;">Designation</th>
+                  <th style="width: 15%;">Qualification</th>
+                  <th style="width: 15%; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyFaculty">
+                <!-- Dynamically populated via js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       MODAL 1: ANNOUNCEMENT FORM MODAL
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="modalAnnouncement">
+    <div class="admin-modal-dialog">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="titleModalAnnouncement">Add Announcement</h3>
+        <button type="button" class="admin-modal-close" onclick="closeModal('modalAnnouncement')">&times;</button>
+      </div>
+      <form id="formAnnouncement">
+        <div class="admin-modal-body">
+          <input type="hidden" id="annId">
+          <div class="admin-form-grid">
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="annTitle">Announcement Title *</label>
+              <input type="text" id="annTitle" class="admin-input-field" placeholder="e.g. MCA Admissions 2026-2027 Open" required>
+            </div>
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="annCategory">Category *</label>
+              <select id="annCategory" class="admin-input-field" required>
+                <option value="Admissions">Admissions</option>
+                <option value="Events">Events</option>
+                <option value="Academics">Academics</option>
+                <option value="Association">Association</option>
+                <option value="General">General</option>
+              </select>
+            </div>
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="annDisplayDate">Display Date</label>
+              <input type="text" id="annDisplayDate" class="admin-input-field" placeholder="e.g. October 24, 2026">
+            </div>
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="annDescription">Description *</label>
+              <textarea id="annDescription" class="admin-input-field" rows="3" placeholder="Provide full announcement details..." required></textarea>
+            </div>
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="annLinkText">Link Text (Optional)</label>
+              <input type="text" id="annLinkText" class="admin-input-field" placeholder="e.g. View Eligibility">
+            </div>
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="annLinkUrl">Link URL (Optional)</label>
+              <input type="text" id="annLinkUrl" class="admin-input-field" placeholder="e.g. programme.html#eligibility">
+            </div>
+            <div class="admin-input-group admin-form-full" style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" id="annIsImportant" style="width: 18px; height: 18px;">
+                <span>Mark as <strong>Important</strong> (Pill Badge)</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" id="annIsLatest" style="width: 18px; height: 18px;">
+                <span>Mark as <strong>New / Latest</strong></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-action-btn" onclick="closeModal('modalAnnouncement')" style="width: auto; padding: 0.55rem 1.15rem; font-weight: 600;">Cancel</button>
+          <button type="submit" class="admin-btn-create">Save Announcement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 2: ACHIEVEMENT FORM MODAL
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="modalAchievement">
+    <div class="admin-modal-dialog large">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="titleModalAchievement">Add Achievement</h3>
+        <button type="button" class="admin-modal-close" onclick="closeModal('modalAchievement')">&times;</button>
+      </div>
+      <form id="formAchievement">
+        <div class="admin-modal-body">
+          <input type="hidden" id="achId">
+          <div class="admin-form-grid">
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-trophy" style="color: #D97706;"></i> Primary Accolade Information
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="achTitle">Achievement Title *</label>
+              <input type="text" id="achTitle" class="admin-input-field" placeholder="e.g. Tecknowfest ’25 – Overall Trophy Champions" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achAwardTitle">Award / Honor Title *</label>
+              <input type="text" id="achAwardTitle" class="admin-input-field" placeholder="e.g. Overall Champions Trophy / First Prize" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achCategory">Category *</label>
+              <select id="achCategory" class="admin-input-field" required>
+                <option value="Intercollegiate Competition">Intercollegiate Competition</option>
+                <option value="Technical Competition">Technical Competition</option>
+                <option value="Placements">Placements</option>
+                <option value="Academic">Academic</option>
+                <option value="Hackathon">Hackathon</option>
+                <option value="Youth Leadership & Social Service">Youth Leadership & Social Service</option>
+                <option value="Sports">Sports</option>
+                <option value="Certifications">Certifications</option>
+              </select>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achRecipient">Recipient / Student / Team *</label>
+              <input type="text" id="achRecipient" class="admin-input-field" placeholder="e.g. Mr. Ranjith Babu S or MCA Student Contingent" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achStudentClass">Student Class / Degree</label>
+              <input type="text" id="achStudentClass" class="admin-input-field" placeholder="e.g. II MCA / I MCA / Final Year">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achYear">Academic Year *</label>
+              <input type="text" id="achYear" class="admin-input-field" placeholder="e.g. 2025-2026" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achDateDisplay">Event / Honor Date</label>
+              <input type="text" id="achDateDisplay" class="admin-input-field" placeholder="e.g. February 27, 2026">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-ribbon" style="color: #3B82F6;"></i> Visual Badges & Organization
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achBadge">Badge Crest Label</label>
+              <input type="text" id="achBadge" class="admin-input-field" placeholder="e.g. OVERALL TROPHY, SPECIAL PRIZE">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achBadgeType">Badge Color Scheme</label>
+              <select id="achBadgeType" class="admin-input-field">
+                <option value="gold">Gold Amber (Championship)</option>
+                <option value="cyan">Cyan Tech (Technical Award)</option>
+                <option value="emerald">Emerald Green (Placement)</option>
+                <option value="purple">Royal Purple (National Honor)</option>
+                <option value="blue">Deep Blue (Standard)</option>
+              </select>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achVenue">Venue / Host College</label>
+              <input type="text" id="achVenue" class="admin-input-field" placeholder="e.g. PSNA College of Engineering and Technology">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="achOrganizer">Organizer / Company / Sponsor</label>
+              <input type="text" id="achOrganizer" class="admin-input-field" placeholder="e.g. Zoho Corporation / Ministry of Youth Affairs">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-circle-info" style="color: #10B981;"></i> Highlights, Description & Media
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="achHighlights">Key Accolade Highlights (One bullet point per line)</label>
+              <textarea id="achHighlights" class="admin-input-field" rows="2" placeholder="Secured 1st Prize in Project War tier&#10;Awarded Gold Medal and Certificate of Distinction"></textarea>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="achDescription">Detailed Description *</label>
+              <textarea id="achDescription" class="admin-input-field" rows="3" placeholder="Provide full narrative describing the achievement, collegiate competition, or placement package..." required></textarea>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="achImage">Image URL or Upload</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="achImage" class="admin-input-field" placeholder="e.g. assets/images/placeholder.jpg">
+                <label class="admin-btn-create" style="cursor: pointer; flex-shrink: 0; padding: 0.65rem 1rem; background: #D97706;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                  <input type="file" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'achImage', 'previewAchImage')">
+                </label>
+              </div>
+              <div id="previewAchImage" style="margin-top: 0.5rem; display: none;">
+                <img src="" alt="Preview" style="max-height: 80px; border-radius: 6px; border: 1px solid #CBD5E1;">
+              </div>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                <input type="checkbox" id="achFeatured" style="width: 18px; height: 18px;">
+                <span>Feature as <strong>Top Meritorious Milestone</strong> on Homepage</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-action-btn" onclick="closeModal('modalAchievement')" style="width: auto; padding: 0.55rem 1.15rem; font-weight: 600;">Cancel</button>
+          <button type="submit" class="admin-btn-create" style="background: #D97706;">Save Achievement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 3: GALLERY FORM MODAL
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="modalGallery">
+    <div class="admin-modal-dialog large">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="titleModalGallery">Add Gallery Item</h3>
+        <button type="button" class="admin-modal-close" onclick="closeModal('modalGallery')">&times;</button>
+      </div>
+      <form id="formGallery">
+        <div class="admin-modal-body">
+          <input type="hidden" id="galId">
+          <div class="admin-form-grid">
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-image" style="color: #059669;"></i> Media Card Details
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="galTitle">Title / Photo Caption *</label>
+              <input type="text" id="galTitle" class="admin-input-field" placeholder="e.g. Advanced MCA Computer Laboratory" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="galCategory">Category *</label>
+              <select id="galCategory" class="admin-input-field" required>
+                <option value="Department">Department</option>
+                <option value="Events">Events</option>
+                <option value="Workshops">Workshops</option>
+                <option value="Seminars">Seminars</option>
+                <option value="Student Activities">Student Activities</option>
+                <option value="Faculty Activities">Faculty Activities</option>
+                <option value="Labs">Labs & Infra</option>
+                <option value="Campus">Campus</option>
+                <option value="Sports">Sports</option>
+              </select>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="galDate">Capture / Event Date</label>
+              <input type="text" id="galDate" class="admin-input-field" placeholder="e.g. October 2026 or 2026-10-15">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-palette" style="color: #0284C7;"></i> Card Theme & Icon Badge
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="galThemeColor">Card Header Theme Color</label>
+              <select id="galThemeColor" class="admin-input-field">
+                <option value="#0B1D3A">Deep Navy (#0B1D3A)</option>
+                <option value="#102A54">Midnight Blue (#102A54)</option>
+                <option value="#0077B6">Ocean Tech Blue (#0077B6)</option>
+                <option value="#059669">Emerald Green (#059669)</option>
+                <option value="#D97706">Amber Gold (#D97706)</option>
+                <option value="#7C3AED">Royal Purple (#7C3AED)</option>
+              </select>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="galIcon">Card Crest Icon</label>
+              <select id="galIcon" class="admin-input-field">
+                <option value="fa-desktop">Desktop / Computer Lab</option>
+                <option value="fa-award">Award / Trophy / Event</option>
+                <option value="fa-cloud">Cloud / Infrastructure</option>
+                <option value="fa-brain">Brain / Artificial Intelligence</option>
+                <option value="fa-code">Code / Hackathon</option>
+                <option value="fa-chalkboard-user">Lecture / Seminar</option>
+                <option value="fa-camera">Camera / Campus Scene</option>
+              </select>
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-file-image" style="color: #64748B;"></i> Photo File & Description
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="galImage">Image File / URL *</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="galImage" class="admin-input-field" placeholder="e.g. assets/images/gallery/lab.jpg" required>
+                <label class="admin-btn-create" style="cursor: pointer; flex-shrink: 0; padding: 0.65rem 1rem; background: #059669;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                  <input type="file" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'galImage', 'previewGalImage')">
+                </label>
+              </div>
+              <div id="previewGalImage" style="margin-top: 0.5rem; display: none;">
+                <img src="" alt="Preview" style="max-height: 100px; border-radius: 6px; border: 1px solid #CBD5E1;">
+              </div>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="galDescription">Detailed Caption / Moment Story</label>
+              <textarea id="galDescription" class="admin-input-field" rows="3" placeholder="Describe the computing session, laboratory experiment, or department ceremony..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-action-btn" onclick="closeModal('modalGallery')" style="width: auto; padding: 0.55rem 1.15rem; font-weight: 600;">Cancel</button>
+          <button type="submit" class="admin-btn-create" style="background: #059669;">Save Gallery Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 4: EVENT FORM MODAL
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="modalEvent">
+    <div class="admin-modal-dialog large">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="titleModalEvent">Schedule Department Event</h3>
+        <button type="button" class="admin-modal-close" onclick="closeModal('modalEvent')">&times;</button>
+      </div>
+      <form id="formEvent">
+        <div class="admin-modal-body">
+          <input type="hidden" id="eveId">
+          <div class="admin-form-grid">
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-calendar-check" style="color: #7C3AED;"></i> Event Identification & Category
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="eveTitle">Event Title *</label>
+              <input type="text" id="eveTitle" class="admin-input-field" placeholder="e.g. CYBERNAUT 2026: National Technical Symposium" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveCategory">Category *</label>
+              <select id="eveCategory" class="admin-input-field" required>
+                <option value="Department Event">Department Event</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Symposium">Symposium</option>
+                <option value="Guest Lecture">Guest Lecture</option>
+                <option value="Competition">Competition</option>
+                <option value="Cultural">Cultural / Sports</option>
+              </select>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveStatus">Current Status</label>
+              <select id="eveStatus" class="admin-input-field">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-clock" style="color: #3B82F6;"></i> Schedule & Location
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveDateDisplay">Date Display *</label>
+              <input type="text" id="eveDateDisplay" class="admin-input-field" placeholder="e.g. Thursday, November 14, 2026" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveTime">Event Timing</label>
+              <input type="text" id="eveTime" class="admin-input-field" placeholder="e.g. 09:30 AM - 04:30 PM">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveVenue">Venue / Auditorium *</label>
+              <input type="text" id="eveVenue" class="admin-input-field" placeholder="e.g. Dr. A.P.J. Abdul Kalam Auditorium, G.T.N. Arts College" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveOrganizer">Organizer</label>
+              <input type="text" id="eveOrganizer" class="admin-input-field" placeholder="Department of Master of Computer Applications">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-user-tie" style="color: #D97706;"></i> Resource Persons & Dignitaries
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="eveSpeaker">Resource Person / Keynote Speaker</label>
+              <input type="text" id="eveSpeaker" class="admin-input-field" placeholder="e.g. Mr. Sujith Kumar, Vice President, Infosys, Chennai">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveChiefGuests">Chief Guests / Special Invitees</label>
+              <input type="text" id="eveChiefGuests" class="admin-input-field" placeholder="e.g. Dr. S. Jagathrakshakan M.P.">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveParticipants">Target Participants</label>
+              <input type="text" id="eveParticipants" class="admin-input-field" placeholder="e.g. Postgraduate scholars, faculty members, and IT aspirants">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-align-left" style="color: #059669;"></i> Agenda, Objective & Registration
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="eveObjective">Event Objective</label>
+              <input type="text" id="eveObjective" class="admin-input-field" placeholder="e.g. Equipping postgraduate scholars with hands-on generative AI deployment strategies">
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="eveHighlights">Key Agenda Highlights (One bullet point per line)</label>
+              <textarea id="eveHighlights" class="admin-input-field" rows="2" placeholder="Keynote address by industry experts&#10;Hands-on coding sprint and debugging clinics&#10;Valedictory and distribution of merit certificates"></textarea>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="eveDescription">Full Event Description *</label>
+              <textarea id="eveDescription" class="admin-input-field" rows="3" placeholder="Overview of the event, workshop modules, and technical takeaways..." required></textarea>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveRegLink">Registration Link / Brochure URL</label>
+              <input type="text" id="eveRegLink" class="admin-input-field" placeholder="e.g. https://forms.gle/xyz">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="eveImage">Banner / Poster URL or Upload</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="eveImage" class="admin-input-field" placeholder="e.g. assets/images/event-poster.jpg">
+                <label class="admin-btn-create" style="cursor: pointer; flex-shrink: 0; padding: 0.65rem 1rem; background: #7C3AED;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                  <input type="file" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'eveImage')">
+                </label>
+              </div>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                <input type="checkbox" id="eveFeatured" style="width: 18px; height: 18px;">
+                <span>Feature as <strong>Key Department Event</strong> on Homepage</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-action-btn" onclick="closeModal('modalEvent')" style="width: auto; padding: 0.55rem 1.15rem; font-weight: 600;">Cancel</button>
+          <button type="submit" class="admin-btn-create" style="background: #7C3AED;">Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 5: FACULTY FORM MODAL
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="modalFaculty">
+    <div class="admin-modal-dialog large">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="titleModalFaculty">Add Faculty Member</h3>
+        <button type="button" class="admin-modal-close" onclick="closeModal('modalFaculty')">&times;</button>
+      </div>
+      <form id="formFaculty">
+        <div class="admin-modal-body">
+          <input type="hidden" id="facId">
+          <div class="admin-form-grid">
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-user-tie" style="color: #0284C7;"></i> Personal & Academic Identification
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facCustomId">Faculty ID * <span style="font-size: 0.75rem; color: #64748B; font-weight: normal;">(e.g. faculty-01)</span></label>
+              <input type="text" id="facCustomId" class="admin-input-field" placeholder="e.g. faculty-01" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facOrder">Display Order * <span style="font-size: 0.75rem; color: #64748B; font-weight: normal;">(1 = HOD / Top)</span></label>
+              <input type="number" id="facOrder" class="admin-input-field" placeholder="e.g. 1" min="1" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facName">Faculty Full Name *</label>
+              <input type="text" id="facName" class="admin-input-field" placeholder="e.g. Dr. A. Vanitha Katharine" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facRole">Department Role Category *</label>
+              <select id="facRole" class="admin-input-field" required>
+                <option value="HOD">Head of the Department (HOD)</option>
+                <option value="Faculty" selected>Faculty Member / Assistant Professor</option>
+              </select>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facRoleTitle">Role Title *</label>
+              <input type="text" id="facRoleTitle" class="admin-input-field" placeholder="e.g. Professor & Head of the Department" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facDesignation">Designation *</label>
+              <input type="text" id="facDesignation" class="admin-input-field" placeholder="e.g. Associate Professor & Head" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facQualification">Academic Qualifications *</label>
+              <input type="text" id="facQualification" class="admin-input-field" placeholder="e.g. MCA., MBA., M.Phil(CS)., Ph.D." required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facExperience">Experience *</label>
+              <input type="text" id="facExperience" class="admin-input-field" placeholder="e.g. 18+ Years Academic & Research Mentorship" required>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facInitials">Initials / Monogram</label>
+              <input type="text" id="facInitials" class="admin-input-field" placeholder="e.g. VK">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facDepartment">Department</label>
+              <input type="text" id="facDepartment" class="admin-input-field" value="Department of Master of Computer Applications (MCA)">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-address-book" style="color: #10B981;"></i> Office & Official Contact Coordinates
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facOfficeLocation">Office Cabin Location</label>
+              <input type="text" id="facOfficeLocation" class="admin-input-field" placeholder="e.g. MCA Department Block, Ground Floor (Cabin F-01)">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facOfficeHours">Consultation Hours</label>
+              <input type="text" id="facOfficeHours" class="admin-input-field" placeholder="e.g. Monday - Friday | 09:30 AM - 04:30 PM">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facEmail">Official Email</label>
+              <input type="email" id="facEmail" class="admin-input-field" placeholder="e.g. mca@gtnartscollege.ac.in">
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-input-label" for="facPhone">Official Contact Phone</label>
+              <input type="text" id="facPhone" class="admin-input-field" placeholder="e.g. +91 (0451) 2431299 / Ext. MCA">
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="facAddress">Institutional Address</label>
+              <input type="text" id="facAddress" class="admin-input-field" value="MCA Department Block, Ground Floor, G.T.N. Arts College (Autonomous), Old Karur Road, Dindigul - 624 005, Tamil Nadu, India.">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-graduation-cap" style="color: #D97706;"></i> Research Focus & Teaching Specializations
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="facSpecialization">Specializations & Research Focus (Comma-separated)</label>
+              <input type="text" id="facSpecialization" class="admin-input-field" placeholder="e.g. Data Mining & Warehousing, Cloud Computing Architectures, AI & Machine Learning, Big Data Analytics">
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="facCourses">Courses Taught / Academic Modules (Comma-separated)</label>
+              <input type="text" id="facCourses" class="admin-input-field" placeholder="e.g. Advanced Database Management Systems, Cloud Computing Architectures, Machine Learning Laboratory">
+            </div>
+
+            <div class="admin-form-section-title">
+              <i class="fa-solid fa-camera" style="color: #64748B;"></i> Portrait Photo & Biography
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="facImage">Photo URL or Upload</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="facImage" class="admin-input-field" placeholder="e.g. assets/images/Prof 1.png">
+                <label class="admin-btn-create" style="cursor: pointer; flex-shrink: 0; padding: 0.65rem 1rem; background: #0284C7;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                  <input type="file" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'facImage', 'previewFacImage')">
+                </label>
+              </div>
+              <div id="previewFacImage" style="margin-top: 0.5rem; display: none;">
+                <img src="" alt="Preview" style="max-height: 80px; border-radius: 6px; border: 1px solid #CBD5E1;">
+              </div>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="facSummary">Elevator Bio / Short Summary</label>
+              <textarea id="facSummary" class="admin-input-field" rows="2" placeholder="Brief 1-2 sentence executive summary of the faculty mentor..."></textarea>
+            </div>
+
+            <div class="admin-input-group admin-form-full">
+              <label class="admin-input-label" for="facBio">Comprehensive Biography & Career Milestones</label>
+              <textarea id="facBio" class="admin-input-field" rows="4" placeholder="Full academic profile, doctoral publications, international journals, research leadership, and departmental contributions..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-action-btn" onclick="closeModal('modalFaculty')" style="width: auto; padding: 0.55rem 1.15rem; font-weight: 600;">Cancel</button>
+          <button type="submit" class="admin-btn-create" style="background: #0284C7;">Save Faculty Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 6: DELETE CONFIRMATION MODAL
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="modalDeleteConfirm">
+    <div class="admin-modal-dialog" style="max-width: 440px; text-align: center;">
+      <div class="admin-modal-body" style="padding: 2.25rem 1.75rem 1.5rem;">
+        <div style="width: 58px; height: 58px; border-radius: 50%; background: #FEE2E2; color: #EF4444; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.25rem;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--admin-navy-dark); margin-bottom: 0.5rem;" id="deleteConfirmTitle">Confirm Deletion</h3>
+        <p style="font-size: 0.88rem; color: var(--admin-text-muted); margin-bottom: 1.5rem;" id="deleteConfirmMsg">
+          Are you sure you want to delete this record? This action cannot be undone.
+        </p>
+        <div style="display: flex; gap: 0.75rem; justify-content: center;">
+          <button type="button" class="admin-action-btn" onclick="closeModal('modalDeleteConfirm')" style="width: auto; padding: 0.65rem 1.25rem; font-weight: 600;">Cancel</button>
+          <button type="button" id="btnConfirmDelete" class="admin-btn-create" style="background: var(--admin-danger); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);">
+            <i class="fa-solid fa-trash-can"></i> Yes, Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       TOAST CONTAINER
+       ====================================================================== -->
+  <div class="admin-toast-container" id="adminToastContainer"></div>
+
+  <!-- Admin JavaScript Logic -->
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

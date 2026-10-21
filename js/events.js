@@ -235,12 +235,17 @@ function createEventCardHTML(event) {
   else if (event.status === "upcoming") footerStatusLabel = "UPCOMING SCHEDULE";
   else if (event.achievement || (event.winners && event.winners.length > 0)) footerStatusLabel = "ACHIEVEMENT";
 
+  const eventBannerImageHTML = (event.image && event.image !== "assets/images/placeholder.jpg")
+    ? `<img src="${event.image}" alt="${event.title}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; z-index: 1;" onerror="this.remove();">`
+    : '';
+
   return `
     <article class="event-card" id="${event.id}">
-      <div class="event-card-banner ${visual.bannerClass}">
+      <div class="event-card-banner ${visual.bannerClass}" style="position: relative; overflow: hidden;">
+        ${eventBannerImageHTML}
         ${dateBadgeHTML}
-        <span class="event-cat-badge">${event.category}</span>
-        <div class="event-banner-art" aria-hidden="true">
+        <span class="event-cat-badge" style="z-index: 2;">${event.category}</span>
+        <div class="event-banner-art" aria-hidden="true" style="z-index: 2;">
           <i class="${visual.icon}"></i>
         </div>
       </div>
@@ -801,9 +806,57 @@ function setupEventsUI() {
   }
 }
 
+async function syncEventsFromAPI() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    let res;
+    try {
+      res = await fetch('/api/events');
+      if (!res.ok) throw new Error('status ' + res.status);
+    } catch (e) {
+      // Fallback for python http.server or static hosts
+      res = await fetch('http://localhost:5000/api/events');
+    }
+    if (res && res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (typeof window !== 'undefined') {
+          window.mcaEventsData = data.data;
+        }
+        renderEvents();
+        renderHomeEventsPreview();
+      }
+    }
+  } catch (e) {
+    // Graceful fallback to static array
+  }
+}
+
 // Initialize on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   renderEvents();
   renderHomeEventsPreview();
   setupEventsUI();
+  syncEventsFromAPI();
 });
+
+// Real-time synchronization when admin saves changes
+if (typeof window !== "undefined") {
+  try {
+    if (typeof BroadcastChannel !== "undefined") {
+      const ch = new BroadcastChannel("mca_sync_channel");
+      ch.onmessage = (e) => {
+        if (!e.data || !e.data.entity || e.data.entity === "events") {
+          syncEventsFromAPI();
+        }
+      };
+    }
+  } catch (e) {}
+
+  window.addEventListener("storage", (e) => {
+    if (e.key === "mca_live_update_timestamp") {
+      syncEventsFromAPI();
+    }
+  });
+}
+
