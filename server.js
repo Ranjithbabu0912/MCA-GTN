@@ -84,7 +84,7 @@ async function startServer() {
     console.log(` Web Server:    http://localhost:${PORT}`);
     console.log(` Admin Portal:  http://localhost:${PORT}/admin.html`);
     console.log(` API Endpoint:  http://localhost:${PORT}/api/health`);
-    console.log(` Default PIN:   admin123 (or user: admin / pass: admin123)`);
+    console.log(` Admin Auth:    Configured via .env (ADMIN_PIN & ADMIN_PASSWORD)`);
     console.log(
       `================================================================`,
     );

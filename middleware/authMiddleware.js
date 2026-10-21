@@ -1,16 +1,18 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'mca_gtn_secret_jwt_key_2026';
-const ADMIN_PIN = process.env.ADMIN_PIN || 'admin123';
+const JWT_SECRET = () => process.env.JWT_SECRET || 'mca_gtn_secret_jwt_key_2026';
 
 function authMiddleware(req, res, next) {
+  require('dotenv').config();
+  const adminPin = (process.env.ADMIN_PIN || '').trim();
+
   // Allow passing either JWT token or direct admin PIN
   const authHeader = req.headers.authorization;
   const pinHeader = req.headers['x-admin-pin'];
 
   // Check PIN header directly
-  if (pinHeader && pinHeader === ADMIN_PIN) {
-    req.admin = { username: 'admin', role: 'superadmin' };
+  if (pinHeader && adminPin && pinHeader.trim() === adminPin) {
+    req.admin = { username: process.env.ADMIN_USER || 'admin', role: 'superadmin' };
     return next();
   }
 
@@ -18,7 +20,7 @@ function authMiddleware(req, res, next) {
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.split(' ')[1];
     try {
-      const decoded = jwt.verify(token, JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET());
       req.admin = decoded;
       return next();
     } catch (err) {

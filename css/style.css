@@ -2457,11 +2457,15 @@ textarea.form-control {
 }
 
 .footer-bottom a {
-  color: #94A3B8;
+  color: #00B4D8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .footer-bottom a:hover {
-  color: #FFFFFF;
+  color: #38BDF8;
+  text-decoration: underline;
 }
 
 /* --------------------------------------------------------------------------

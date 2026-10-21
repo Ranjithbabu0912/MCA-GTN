@@ -1,6 +1,7 @@
 /**
  * Comprehensive API Test Runner for Admin Module CRUD Operations
  */
+require('dotenv').config();
 const http = require('http');
 
 const BASE_URL = 'http://localhost:5000';
@@ -44,7 +45,7 @@ async function runTests() {
   const pinRes = await request('/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: { pin: 'admin123' }
+    body: { pin: process.env.ADMIN_PIN || 'admin@1234' }
   });
   if (pinRes.status === 200 && pinRes.body.token) {
     token = pinRes.body.token;
