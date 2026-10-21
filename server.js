@@ -58,6 +58,15 @@ app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "admin.html"));
 });
 
+// Catch-all 404 Handler
+app.use((req, res) => {
+  if (req.accepts("html")) {
+    res.status(404).sendFile(path.join(__dirname, "404.html"));
+  } else {
+    res.status(404).json({ success: false, message: "Endpoint not found" });
+  }
+});
+
 // Start Server
 async function startServer() {
   await connectDB();

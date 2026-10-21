@@ -57,22 +57,34 @@ MCA/
 
 ---
 
-## 🚀 Running the Website Locally
+## 🚀 Running Locally & Production Deployment
 
-Since the project is built purely with standard HTML5, CSS3, and Vanilla JavaScript, it can be viewed directly in any modern browser without needing build tools or package managers.
-
-### Option 1: Direct File Opening
-Double-click `index.html` to open it in Google Chrome, Microsoft Edge, Mozilla Firefox, or Safari.
-
-### Option 2: Python Built-in Static Server
+### 💻 Local Development
 ```bash
-# In the project root directory:
-python -m http.server 8080
-```
-Open `http://localhost:8080` in your web browser.
+# 1. Install dependencies
+npm install
 
-### Option 3: VS Code Live Server
-Right-click on `index.html` inside VS Code and select **"Open with Live Server"**.
+# 2. Configure .env (see .env.example)
+# Add your MONGODB_URI and desired PIN/Secret
+
+# 3. Start the application
+npm start
+# Server runs on http://localhost:5000 with admin at http://localhost:5000/admin.html
+```
+
+### ☁️ Production Cloud Deployment (Render / Railway / VPS)
+
+The application is fully containerized and production-ready for deployment on **Render**, **Railway**, **Fly.io**, **Vercel**, or any Linux VPS (Ubuntu/Nginx):
+
+1. **Build Command:** `npm install`
+2. **Start Command:** `npm start` (or `node server.js`)
+3. **Node Engine:** `>=18.0.0`
+4. **Environment Variables to Set:**
+   - `PORT` (Usually set automatically by the platform, default `5000`)
+   - `MONGODB_URI` (Your live MongoDB Atlas connection string)
+   - `JWT_SECRET` (A strong random string for signing admin session tokens)
+   - `ADMIN_PIN` (Security PIN for instant admin unlock, e.g. `admin123`)
+   - `ADMIN_USER` & `ADMIN_PASSWORD` (Admin credentials, e.g. `admin` / `admin123`)
 
 ---
 

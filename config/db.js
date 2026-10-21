@@ -4,10 +4,14 @@ let isConnectedToMongo = false;
 
 async function connectDB() {
   const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    console.error('[MongoDB] Error: MONGODB_URI is not set in environment variables.');
+    return;
+  }
 
   try {
     await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 5000
+      serverSelectionTimeoutMS: 8000
     });
     isConnectedToMongo = true;
     console.log(`[MongoDB] Connected successfully to MongoDB Atlas.`);

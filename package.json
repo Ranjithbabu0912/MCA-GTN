@@ -1,15 +1,25 @@
 {
-  "name": "mca",
+  "name": "gtn-mca-department",
   "version": "1.0.0",
-  "description": "> **Tagline:** EMPOWERING MINDS | INSPIRING INNOVATION | SHAPING FUTURES   > **Status:** Fully responsive static website (HTML5, CSS3, Vanilla JavaScript)   > **Accreditation:** Re-accredited with 'A' Grade by NAAC | Affiliated to Madurai Kamaraj University",
-  "main": "verify_site.js",
+  "description": "G.T.N. Arts College (Autonomous), Dindigul — Department of MCA Website & Admin Portal",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "audit": "node verify_site.js"
+    "test": "node test_admin_crud.js",
+    "verify": "node verify_site.js"
   },
-  "keywords": [],
-  "author": "",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mca",
+    "college",
+    "mern",
+    "mongodb-atlas",
+    "express"
+  ],
+  "author": "Department of MCA, G.T.N. Arts College",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
